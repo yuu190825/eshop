@@ -14,27 +14,27 @@ import main.model.Order;
 @Transactional
 public class OrderServiceImpl implements OrderService {
 
-	@Autowired
-	private OrderDAO orderDAO;
+    @Autowired
+    private OrderDAO orderDAO;
 
-	@Override
-	public List<Order> getAll() {
-		return orderDAO.getAll();
-	}
+    @Override
+    public List<Order> getAll() {
+        return orderDAO.getAll();
+    }
 
-	@Override
-	public Order getById(long orderId) {
-		return orderDAO.getById(orderId);
-	}
+    @Override
+    public Order getById(long orderId) {
+        return orderDAO.getById(orderId);
+    }
 
-	@Override
-	public void saveOrUpdate(Order order) {
-		orderDAO.saveOrUpdate(order);
-	}
+    @Override
+    public void saveOrUpdate(Order order) {
+        orderDAO.saveOrUpdate(order);
+    }
 
-	@Override
-	public void delete(long orderId) {
-		orderDAO.delete(orderId);
-	}
+    @Override
+    public void delete(long orderId) {
+        orderDAO.delete(orderId);
+    }
 
 }

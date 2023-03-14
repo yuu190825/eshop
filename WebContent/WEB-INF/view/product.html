@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	  xmlns:th="http://www.thymeleaf.org"
-	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 	<head>
         <meta charset="utf-8" />
-        <title>電 子 商 城</title>
+        <title>eshop</title>
         <link rel="icon" type="image/x-icon" th:href="@{/resources/ico/favicon.ico}">
         <link rel="stylesheet" type="text/css" th:href="@{/resources/css/styles.css}">
         <link rel="stylesheet" type="text/css" th:href="@{/resources/css/bootstrap.min.css}">
@@ -19,7 +19,7 @@
             <section class="py-5">
                 <div class="container px-5 my-5">
                     <div class="row gx-5 justify-content-center">
-						<h1>產品總覽 </h1>
+						<h1>所有產品 </h1>
 						<h4 th:if="${!login_user.empty}" th:text="${login_user}"></h4>
 					</div>
 					
@@ -29,9 +29,9 @@
 								<tr>
 									<th scope="col">產品編號</th>
 									<th scope="col">品牌</th>
-									<th scope="col">產品類別</th>
+                                    <th scope="col">產品類別</th>
 									<th scope="col">產品名稱</th>
-<!-- 									<th scope="col">圖片</th> -->
+									<th scope="col">圖片</th>
 									<th scope="col">產品資訊</th>
 									<th scope="col">價錢</th>
 									<th scope="col">數量</th>
@@ -43,13 +43,13 @@
 							<tbody>
 								<tr th:each="product : ${products}">
 									<td th:text="${product.id}"></td>
-									<td th:text="${product.brand.brandName}"></td>
+									<td th:text="${product.brand.brandDescription}"></td>
 									<a type ="hidden" th:value ="${product.brand.id}"></a>
-									<td th:text="${product.productCategory}"></td>
+                                    <td th:text="${product.productCategory}"></td>
 									<td th:text="${product.productName}"></td>
-<!-- 									<td th:text="${product.productImage}"></td> -->
+									<td th:text="${product.productImage}"></td>
 									<td th:text="${product.productDescription}"></td>
-									<td th:text="${#strings.replace(#strings.replace(#numbers.formatCurrency(product.productPrice), '¤', '$'), '.00', '')}"></td>
+                                    <td th:text="${#strings.replace(#strings.replace(#numbers.formatCurrency(product.productPrice), '¤', '$'), '.00', '')}"></td>
 <!-- 									<td th:text="${product.productPrice}"></td> -->
 									<td><input type="number" class="form-control" step="any"  min="0" value="1"></td>
 									<td><a class="btn btn-outline-success" type="submit" th:href="@{/show-cartform/} + ${product.id}">加入購物車</a></td>
@@ -71,7 +71,22 @@
 						<a th:href="@{/add-product}" class="btn btn-info">新增產品</a>
 						<a th:href="@{/}" class="btn btn-warning">返回</a>
 					</div>
-                    <!-- Call to action-->                 
+                    <!-- Call to action-->
+                    <aside class="bg-primary bg-gradient rounded-3 p-4 p-sm-5 mt-5">
+                        <div class="d-flex align-items-center justify-content-between flex-column flex-xl-row text-center text-xl-start">
+                            <div class="mb-4 mb-xl-0">
+                                <div class="fs-3 fw-bold text-white">New products, delivered to you.</div>
+                                <div class="text-white-50">Sign up for our newsletter for the latest updates.</div>
+                            </div>
+                            <div class="ms-xl-4">
+                                <div class="input-group mb-2">
+                                    <input class="form-control" type="text" placeholder="Email address..." aria-label="Email address..." aria-describedby="button-newsletter" />
+                                    <button class="btn btn-outline-light" id="button-newsletter" type="button">Sign up</button>
+                                </div>
+                                <div class="small text-white-50">We care about privacy, and will never share your data.</div>
+                            </div>
+                        </div>
+                    </aside>
                 </div>
             </section>
         </main>

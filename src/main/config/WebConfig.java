@@ -30,7 +30,7 @@ public class WebConfig implements WebMvcConfigurer{
 
 	@Autowired
 	private WebApplicationContext context;
-	
+
 	@Bean
 	public ServletContextTemplateResolver templateResolver() {
 		ServletContextTemplateResolver resolver = new ServletContextTemplateResolver(context.getServletContext());
@@ -47,7 +47,7 @@ public class WebConfig implements WebMvcConfigurer{
 		templateEngine.setTemplateResolver(templateResolver());
 		return templateEngine;
 	}
-	
+
 	@Bean
 	public ThymeleafViewResolver viewResolver() {
 		ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
@@ -55,7 +55,7 @@ public class WebConfig implements WebMvcConfigurer{
 		viewResolver.setCharacterEncoding("UTF-8");
 		return viewResolver;
 	}
-	
+
 	@Bean
 	public MessageSource messageSource() {
 		ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
@@ -63,19 +63,19 @@ public class WebConfig implements WebMvcConfigurer{
 		messageSource.setDefaultEncoding("UTF-8");
 		return messageSource;
 	}
-	
+
 	@Bean
 	public LocalValidatorFactoryBean createValidator() {
 		LocalValidatorFactoryBean bean = new LocalValidatorFactoryBean();
 		bean.setValidationMessageSource(messageSource());
 		return bean;
 	}
-	
+
 	@Override
 	public Validator getValidator() {
 		return createValidator();
 	}
-	
+
 	@Override
 	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
 		configurer.enable();

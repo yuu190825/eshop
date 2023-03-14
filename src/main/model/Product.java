@@ -3,19 +3,7 @@ package main.model;
 import java.math.BigDecimal;
 import java.util.Date;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -30,18 +18,18 @@ public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_id")
-	private long id;
+	private long productId;
 
-    @Column(name = "product_category")
-    private String productCategory;
+	@Column(name = "product_category")
+	private String productCategory;
 
 	@Column(name = "product_name",length = 100)
     @NotBlank(message = "{product.name.notblank}")
     @Size(min = 2, message = "{product.name.size}")
     private String productName;
-    
+
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "product_image_id")
+	@Column(name = "product_image")
 	private ProductImage productImage;
 	
 	@Column(name = "product_description")
@@ -52,7 +40,7 @@ public class Product {
 	@Column(name = "product_price")
 	private BigDecimal productPrice;
 
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "brand_id")// 物件"brand"加底限"_"加物件欄位 "id"(PS:id欄位名稱)
 	private Brand brand;
     
@@ -66,12 +54,12 @@ public class Product {
     @Column(name = "update_date")
 	private Date updateDate;
 
-	public long getId() {
-		return id;
+	public long getProductId() {
+		return productId;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setProductId(long productId) {
+		this.productId = productId;
 	}
 
 	public String getProductCategory() {

@@ -24,14 +24,14 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public Product getById(long id) {
-		return productRepository.findById(id).orElseGet(null);
+	public Product getById(long productId) {
+		return productRepository.findById(productId).orElseGet(null);
 	}
 
 	@Override
 	public void saveOrUpdate(Product product) {
         Date dateTimeDate = new Date();
-		if (product.getId()!= 0) {
+		if (product.getProductId()!= 0) {
             product.setUpdateDate(dateTimeDate);
 		}else {
             product.setCreateDate(dateTimeDate);
@@ -41,8 +41,8 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public void delete(long id) {
-		productRepository.deleteById(id);
+	public void delete(long productId) {
+		productRepository.deleteById(productId);
 	}
 
 	@Override

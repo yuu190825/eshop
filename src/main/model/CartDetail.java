@@ -1,20 +1,10 @@
 package main.model;
 
+import org.hibernate.annotations.CreationTimestamp;
+
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 @Table(name = "cart_detail")
@@ -52,9 +42,14 @@ public class CartDetail {
     @Column(name = "update_date")
     private Date updateDate;
 
-    @ManyToOne
-	@JoinColumn(name = "cart_id")
-	private Cart cart;
+    /* Temp Start */
+    //@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	//@JoinColumn(name = "cart_cart_id")
+	//private Cart cart;
+    @ManyToOne //(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "cart_id")
+    private Cart cart;
+    /* Temp End */
 
     public long getCartDetailId() {
         return cartDetailId;

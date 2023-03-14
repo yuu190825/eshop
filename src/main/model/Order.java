@@ -22,101 +22,101 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name = "orders")
 public class Order {
 
-	public enum Payment {
-		money, card;
-	}
+    public enum Payment {
+        money, card;
+    }
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "order_id")
-	private long orderId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "order_id")
+    private long orderId;
 
-	@NotNull(message = "{order.date.notnull}")
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@Column(name = "order_date")
-	private Date orderDate;
+    @NotNull(message = "{order.date.notnull}")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "order_date")
+    private Date orderDate;
 
-	@Column(name = "customer_id")
-	private long customerId;
+    @Column(name = "customer_id")
+    private long customerId;
 
-	@Column(name = "payment")
-	private Payment payment;
+    @Column(name = "payment")
+    private Payment payment;
 
-	@Min(value = 0, message = "{order.amount}")
-	@Column(name = "amount")
-	private BigDecimal amount = new BigDecimal("0");
+    @Min(value = 0, message = "{order.amount}")
+    @Column(name = "amount")
+    private BigDecimal amount = new BigDecimal("0");
 
-	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<OrderDetail> orderDetails;
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrderDetail> orderDetails;
 
-	@Column(name = "update_date")
-	private Date updateDate = Date.from(Instant.now());
+    @Column(name = "update_date")
+    private Date updateDate = Date.from(Instant.now());
 
-	@Column(name = "cancel")
-	private boolean cancel = false;
+    @Column(name = "cancel")
+    private boolean cancel = false;
 
-	public long getOrderId() {
-		return orderId;
-	}
+    public long getOrderId() {
+        return orderId;
+    }
 
-	public void setOrderId(long orderId) {
-		this.orderId = orderId;
-	}
+    public void setOrderId(long orderId) {
+        this.orderId = orderId;
+    }
 
-	public Date getOrderDate() {
-		return orderDate;
-	}
+    public Date getOrderDate() {
+        return orderDate;
+    }
 
-	public void setOrderDate(Date orderDate) {
-		this.orderDate = orderDate;
-	}
+    public void setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
+    }
 
-	public long getCustomerId() {
-		return customerId;
-	}
+    public long getCustomerId() {
+        return customerId;
+    }
 
-	public void setCustomerId(long customerId) {
-		this.customerId = customerId;
-	}
+    public void setCustomerId(long customerId) {
+        this.customerId = customerId;
+    }
 
-	public Payment getPayment() {
-		return payment;
-	}
+    public Payment getPayment() {
+        return payment;
+    }
 
-	public void setPayment(Payment payment) {
-		this.payment = payment;
-	}
+    public void setPayment(Payment payment) {
+        this.payment = payment;
+    }
 
-	public BigDecimal getAmount() {
-		return amount.setScale(0, RoundingMode.DOWN);
-	}
+    public BigDecimal getAmount() {
+        return amount.setScale(0, RoundingMode.DOWN);
+    }
 
-	public void setAmount(BigDecimal amount) {
-		this.amount = amount;
-	}
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
+    }
 
-	public List<OrderDetail> getOrderDetails() {
-		return orderDetails;
-	}
+    public List<OrderDetail> getOrderDetails() {
+        return orderDetails;
+    }
 
-	public void setOrderDetails(List<OrderDetail> orderDetails) {
-		this.orderDetails = orderDetails;
-	}
+    public void setOrderDetails(List<OrderDetail> orderDetails) {
+        this.orderDetails = orderDetails;
+    }
 
-	public Date getUpdateDate() {
-		return updateDate;
-	}
+    public Date getUpdateDate() {
+        return updateDate;
+    }
 
-	public void setUpdateDate(Date updateDate) {
-		this.updateDate = updateDate;
-	}
+    public void setUpdateDate(Date updateDate) {
+        this.updateDate = updateDate;
+    }
 
-	public boolean isCancel() {
-		return cancel;
-	}
+    public boolean isCancel() {
+        return cancel;
+    }
 
-	public void setCancel(boolean cancel) {
-		this.cancel = cancel;
-	}
+    public void setCancel(boolean cancel) {
+        this.cancel = cancel;
+    }
 
 }

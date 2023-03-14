@@ -39,7 +39,7 @@
 	<!-- 				                        <th scope="col">總金額</th> -->
 					                        <th scope="col">編輯</th>
 					                        <th scope="col">刪除</th>
-					                        <th scope="col">顯示</th>
+											<th scope="col">顯示</th>
 					                    </tr>
 		                			</thead>
 									<tbody>
@@ -50,12 +50,12 @@
 	<!-- 				                        <td th:text="${cartDetail.unitprice}"></td> -->
 					                        <td th:text="${cartDetail.quantity}"></td>
 	<!-- 				                        <td th:text="${cartDetail.totalPrice}"></td> -->
-					                        <td><a class="btn btn-primary" th:href="@{/edit-product/} + ${id}">編輯</a></td>
-					                        <td><a class="btn btn-danger" 
-					                               th:data-confirm-delete="是否刪除商品？"
-					                               onclick="if(!confirm(this.getAttribute('data-confirm-delete')))return false"
-					                               th:href="@{/delete-product/} + ${id}">刪除</a></td>
-											<td><a class="btn btn-success" th:href="@{/show-order-details/} + ${productId}">顯示</a></td>
+											<td><a class="btn btn-primary" th:href="@{/edit-product/} + ${product.productId}">編輯</a></td>
+											<td><a class="btn btn-danger"
+												   th:data-confirm-delete="是否刪除商品？"
+												   onclick="if(!confirm(this.getAttribute('data-confirm-delete')))return false"
+												   th:href="@{/delete-product/} + ${product.productId}">刪除</a></td>
+											<td><a class="btn btn-success" th:href="@{/show-order-details/} + ${product.id}">顯示</a></td>
 										</tr>
 									</tbody>
 								</table>

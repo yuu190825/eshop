@@ -3,9 +3,9 @@
 	  xmlns:th="http://www.thymeleaf.org">
 	<head>
         <meta charset="utf-8" />
-        <title>電 子 商 城</title>
+        <title>eshop</title>
         <link rel="icon" type="image/x-icon" th:href="@{/resources/ico/favicon.ico}">
-        <link rel="stylesheet" type="text/css" th:href="@{/resources/css/styles.css}">
+		<link rel="stylesheet" type="text/css" th:href="@{/resources/css/styles.css}">
         <link rel="stylesheet" type="text/css" th:href="@{/resources/css/bootstrap.min.css}">
         <script th:src="@{/resources/js/jquery-3.6.3.min.js}"></script>
         <script th:src="@{/resources/js/bootstrap.bundle.min.js}"></script>
@@ -14,30 +14,25 @@
 		<main class="flex-shrink-0">
             <!-- Navigation-->
             <div th:insert="navbar :: navbar"></div>
-<<<<<<< Updated upstream
-=======
-            
->>>>>>> Stashed changes
             <!-- Blog preview section-->
             <section class="py-5">
                 <div class="container px-5 my-5">
                     <div class="row gx-5 justify-content-center">
                         <div class="col-sm">
 							<h1>產品資料編輯</h1>
-							<form action="#" th:action="@{/process-product-form}" th:object="${product}" 
-								method="post" th:accept-charset="utf-8" enctype="multipart/form-data">
+							<form action="#" th:action="@{/process-product-form}" th:object="${product}" method="post" th:accept-charset="utf-8" enctype="multipart/form-data">
 							
 								<div class="form-group">
 									<input type="hidden" class="form-control" th:field="*{id}">
 								</div>
-								<div class="form-group" role="alert" th:if="${#fields.hasErrors('brand.id')}" th:errors="*{brand.id}">
-									<input type="hidden" class="form-control" th:field="*{brand.id != null ? brand.id : 0}">
-								</div>
+                                <div class="form-group" role="alert" th:if="${#fields.hasErrors('brand.id')}" th:errors="*{brand.id}">
+                                    <input type="hidden" class="form-control" th:field="*{brand.id != null ? brand.id : 0}">
+                                </div>
 								
 								<div class="form-group">
 									<label>品牌</label>
-									<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('brand.brandName')}" th:errors="*{brand.brandName}"></div>
-									<input type="text" class="form-control" th:field="*{brand.brandName}">
+									<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('brand.brandDescription')}" th:errors="*{brand.brandDescription}"></div>
+									<input type="text" class="form-control" th:field="*{brand.brandDescription}">
 								</div>		
 								
 								<div class="form-group">
@@ -45,17 +40,17 @@
 									<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('productName')}" th:errors="*{productName}"></div>
 									<input type="text" class="form-control" th:field="*{productName}">
 								</div>
-								
-								<div class="form-group">
-									<label>產品類別</label>
-									<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('productCategory')}" th:errors="*{productCategory}"></div>
-									<input type="text" class="form-control" th:field="*{productCategory}">
-								</div>
+
+                                <div class="form-group">
+                                    <label>產品類別</label>
+                                    <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('productCategory')}" th:errors="*{productCategory}"></div>
+                                    <input type="text" class="form-control" th:field="*{productCategory}">
+                                </div>
 								
 								<div class="form-group">
 									<label>產品圖片</label>
-									<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('productImage')}" th:errors="*{global}"></div>
-									<input type="file" class="form-control" id="upload_file" name="file" accept="image/*;capture=camera" th:field="*{productImage}">
+									<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('productImage')}" th:errors="*{productImage}"></div>
+									<input type="text" class="form-control" id="upload_file" name="file" accept="image/*;capture=camera" th:field="*{productImage}">
 								</div>
 								
 								<div class="form-group">
@@ -81,7 +76,22 @@
 							</form>
 						</div>
                     </div>
-                    <!-- Call to action-->                   
+                    <!-- Call to action-->
+                    <aside class="bg-primary bg-gradient rounded-3 p-4 p-sm-5 mt-5">
+                        <div class="d-flex align-items-center justify-content-between flex-column flex-xl-row text-center text-xl-start">
+                            <div class="mb-4 mb-xl-0">
+                                <div class="fs-3 fw-bold text-white">New products, delivered to you.</div>
+                                <div class="text-white-50">Sign up for our newsletter for the latest updates.</div>
+                            </div>
+                            <div class="ms-xl-4">
+                                <div class="input-group mb-2">
+                                    <input class="form-control" type="text" placeholder="Email address..." aria-label="Email address..." aria-describedby="button-newsletter" />
+                                    <button class="btn btn-outline-light" id="button-newsletter" type="button">Sign up</button>
+                                </div>
+                                <div class="small text-white-50">We care about privacy, and will never share your data.</div>
+                            </div>
+                        </div>
+                    </aside>
                 </div>
             </section>
         </main>
