@@ -1,7 +1,5 @@
 package main.config;
 
-import javax.sql.DataSource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,18 +14,14 @@ import org.springframework.security.web.csrf.CsrfFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.filter.CharacterEncodingFilter;
 
-/**
- * 設定檔
- * @author sam
- *
- */
+import javax.sql.DataSource;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private DataSource dataSource;
-	
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return PasswordEncoderFactories.createDelegatingPasswordEncoder();
@@ -49,45 +43,45 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //		.withUser("Michael").password(passwordEncoder().encode("client")).roles("CLIENT");
 //	}
 		auth
-			.jdbcAuthentication().dataSource(dataSource)
-			.usersByUsernameQuery("select login, password, enabled from user where login=?")
-			.authoritiesByUsernameQuery("select login, role from role where login=?");
+				.jdbcAuthentication().dataSource(dataSource)
+				.usersByUsernameQuery("select login, password, enabled from user where login=?")
+				.authoritiesByUsernameQuery("select login, role from role where login=?");
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		//unicode UTF-8
 		CharacterEncodingFilter filter = new CharacterEncodingFilter();
-        filter.setEncoding("UTF-8");
-        filter.setForceEncoding(true);
-        http.addFilterBefore(filter,CsrfFilter.class);
-        
+		filter.setEncoding("UTF-8");
+		filter.setForceEncoding(true);
+		http.addFilterBefore(filter, CsrfFilter.class);
+
 		http.authorizeRequests()
-			.antMatchers("/", "/login")
+				.antMatchers("/", "/login")
 				.permitAll()
 
-			.antMatchers("/add-customer", "/edit-customer")
+				.antMatchers("/add-customer", "/edit-customer")
 				.hasAnyRole("EMPLOYEE")
-			.antMatchers("/delete-customer")
+				.antMatchers("/delete-customer")
 				.hasAnyRole("ADMIN")
-			.antMatchers("/add-user-to-customer")
+				.antMatchers("/add-user-to-customer")
 				.hasAnyRole("CLIENT")
 
-			.antMatchers("/add-order", "/show-order", "/edit-order")
+				.antMatchers("/add-order", "/show-order", "/edit-order")
 				.hasAnyRole("ADMIN", "EMPLOYEE")
-			.and()
+				.and()
 				.formLogin()
 				.loginPage("/login")
 				.loginProcessingUrl("/checkUserAccount")
 				.defaultSuccessUrl("/")
 				.permitAll()
-			.and()
+				.and()
 				.logout()
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 				.logoutSuccessUrl("/")
 				.invalidateHttpSession(true)
 				.permitAll()
-			.and()
+				.and()
 				//.exceptionHandling().accessDeniedPage("/forbidden");
 				.exceptionHandling().accessDeniedHandler(accessDeniedHandler());
 	}

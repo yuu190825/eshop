@@ -44,19 +44,19 @@ public class User {
     @ManyToMany
     @JoinTable(name = "customer2user", joinColumns = @JoinColumn(name = "user_userId"), inverseJoinColumns = @JoinColumn(name = "customer_customerId"))
     private List<Customer> customers;
-    
+
     @Column(name = "customer_id")
     private long customerId;
-    
+
     @Temporal(TemporalType.TIMESTAMP)
     @CreationTimestamp
     @Column(name = "create_date")
-	private Date createDate;
-    
-	@Temporal(TemporalType.TIMESTAMP)
+    private Date createDate;
+
+    @Temporal(TemporalType.TIMESTAMP)
     @CreationTimestamp
     @Column(name = "update_date")
-	private Date updateDate;
+    private Date updateDate;
 
     public String getLogin() {
         return login;
@@ -106,35 +106,35 @@ public class User {
         this.customers = customers;
     }
 
-	public Date getCreateDate() {
-		return createDate;
-	}
+    public Date getCreateDate() {
+        return createDate;
+    }
 
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
-	}
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
 
-	public Date getUpdateDate() {
-		return updateDate;
-	}
+    public Date getUpdateDate() {
+        return updateDate;
+    }
 
-	public void setUpdateDate(Date updateDate) {
-		this.updateDate = updateDate;
-	}
+    public void setUpdateDate(Date updateDate) {
+        this.updateDate = updateDate;
+    }
 
-	public long getUserId() {
-		return userId;
-	}
+    public long getUserId() {
+        return userId;
+    }
 
-	public void setUserId(long userId) {
-		this.userId = userId;
-	}
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
 
-	public long getCustomerId() {
-		return customerId;
-	}
+    public long getCustomerId() {
+        return customerId;
+    }
 
-	public void setCustomerId(long customerId) {
-		this.customerId = customerId;
-	}
+    public void setCustomerId(long customerId) {
+        this.customerId = customerId;
+    }
 }

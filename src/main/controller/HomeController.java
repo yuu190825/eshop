@@ -11,7 +11,8 @@ public class HomeController {
 	public String getHome() {
 //		StringBuilder sBuilder = new StringBuilder("")
 //				.append("a");
-		return "index2";
+		return "index";
+		// return "index2";
 	}
 
 }

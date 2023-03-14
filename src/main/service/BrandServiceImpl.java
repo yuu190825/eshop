@@ -13,7 +13,7 @@ import main.repository.BrandRepository;
 @Service
 @Transactional
 public class BrandServiceImpl implements BrandService {
-	
+
 	@Autowired
 	private BrandRepository brandRepository;
 
@@ -39,7 +39,8 @@ public class BrandServiceImpl implements BrandService {
 
 	@Override
 	public Brand getByName(String name) {
-		return brandRepository.findByBrandName(name);
+		return brandRepository.findByBrandDescription(name);
 	}
+	// public Brand getByName(String name) { return brandRepository.findByBrandName(name); }
 
 }

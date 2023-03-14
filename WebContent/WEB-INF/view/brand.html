@@ -2,18 +2,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	  xmlns:th="http://www.thymeleaf.org">
 	<head>
-			<meta charset="UTF-8">
-	        <title>電 子 商 城</title>
-	        <link rel="icon" type="image/x-icon" th:href="@{/resources/ico/favicon.ico}">
-	        <link rel="stylesheet" type="text/css" th:href="@{/resources/css/styles.css}">
-	        <link rel="stylesheet" type="text/css" th:href="@{/resources/css/bootstrap.min.css}">
-	        <script th:src="@{/resources/js/jquery-3.6.3.min.js}"></script>
-	        <script th:src="@{/resources/js/bootstrap.bundle.min.js}"></script> 
+        <meta charset="utf-8" />
+        <title>eshop</title>
+        <link rel="icon" type="image/x-icon" th:href="@{resources/ico/favicon.ico}">
+        <link rel="stylesheet" type="text/css" th:href="@{/resources/css/styles.css}">
+        <link rel="stylesheet" type="text/css" th:href="@{resources/css/bootstrap.min.css}">
+        <script th:src="@{resources/js/jquery-3.6.3.min.js}"></script>
+        <script th:src="@{resources/js/bootstrap.bundle.min.js}"></script>
 	</head>
-<body class="d-flex flex-column h-100">
-	<main class="flex-shrink-0">
-		<!-- Navigation-->
-		<div th:insert="navbar :: navbar"></div>
+	<body class="d-flex flex-column h-100">
+		<main class="flex-shrink-0">
+            <!-- Navigation-->
+            <div th:insert="navbar :: navbar"></div>
             <!-- Blog preview section-->
             <section class="py-5">
                 <div class="container px-5 my-5">
@@ -58,29 +58,25 @@
 						<a th:href="@{/}" class="btn btn-warning">返回</a>
 					</div>
                     <!-- Call to action-->
-<!--                     <aside class="bg-primary bg-gradient rounded-3 p-4 p-sm-5 mt-5"> -->
-<!-- 						<div -->
-<!-- 							class="d-flex align-items-center justify-content-between flex-column flex-xl-row text-center text-xl-start"> -->
-<!-- 							<div class="mb-4 mb-xl-0"> -->
-<!-- 								<div class="fs-3 fw-bold text-white">隨時收到最新商品</div> -->
-<!-- 								<div class="text-white-50">註冊以獲得我們寄送的最新產品的消息</div> -->
-<!-- 							</div> -->
-<!-- 							<div class="ms-xl-4"> -->
-<!-- 								<div class="input-group mb-2"> -->
-<!-- 									<input class="form-control" type="text" -->
-<!-- 										placeholder="Email address..." aria-label="Email address..." -->
-<!-- 										aria-describedby="button-newsletter" /> -->
-<!-- 									<button class="btn btn-outline-light" id="button-newsletter" -->
-<!-- 										type="button" th:href="@{/sign-up}">註冊</button> -->
-<!-- 								</div> -->
-<!-- 								<div class="small text-white-50">我們注重隱私,且絕不會與他人分享您的資料</div> -->
-<!-- 							</div> -->
-<!-- 						</div> -->
-<!-- 					</aside> -->
+                    <aside class="bg-primary bg-gradient rounded-3 p-4 p-sm-5 mt-5">
+                        <div class="d-flex align-items-center justify-content-between flex-column flex-xl-row text-center text-xl-start">
+                            <div class="mb-4 mb-xl-0">
+                                <div class="fs-3 fw-bold text-white">New products, delivered to you.</div>
+                                <div class="text-white-50">Sign up for our newsletter for the latest updates.</div>
+                            </div>
+                            <div class="ms-xl-4">
+                                <div class="input-group mb-2">
+                                    <input class="form-control" type="text" placeholder="Email address..." aria-label="Email address..." aria-describedby="button-newsletter" />
+                                    <button class="btn btn-outline-light" id="button-newsletter" type="button">Sign up</button>
+                                </div>
+                                <div class="small text-white-50">We care about privacy, and will never share your data.</div>
+                            </div>
+                        </div>
+                    </aside>
                 </div>
             </section>
         </main>
         <!-- Footer-->
-		<div th:insert="footer :: footer"></div>
+        <div th:insert="footer :: footer"></div>
 	</body>
 </html>

@@ -28,8 +28,11 @@ public class Brand {
 
 //	@NotBlank(message = "{brand.description.notblank}")
 //    @Size(min = 2, message = "{brand.description.size}")
-    @Column(name = "brand_name", length = 20)
-    private String brandName;
+	@Column(name = "brand_name", length = 20)
+	private String brandName;
+
+    @Column(name = "brand_description", length = 20)
+    private String brandDescription;
     
     @Temporal(TemporalType.TIMESTAMP)
     @CreationTimestamp
@@ -46,8 +49,8 @@ public class Brand {
      * 
      * @OneToOne(mappedBy = "product") private Product product;
      */
-    
-    @OneToMany(mappedBy = "brand", cascade = CascadeType.ALL, fetch = FetchType.LAZY,orphanRemoval = true)
+
+	@OneToMany(mappedBy = "brand", cascade = CascadeType.ALL, fetch = FetchType.LAZY,orphanRemoval = true)
 	private List<Product> products;
 
 	public long getId() {
@@ -58,12 +61,12 @@ public class Brand {
 		this.id = id;
 	}
 
-	public String getBrandName() {
-		return brandName;
+	public String getBrandDescription() {
+		return brandDescription;
 	}
 
-	public void setBrandName(String brandName) {
-		this.brandName = brandName;
+	public void setBrandDescription(String brandDescription) {
+		this.brandDescription = brandDescription;
 	}
 
 	public Date getCreateDate() {
