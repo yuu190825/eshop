@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	<head>
+		<meta charset="UTF-8">
+        <title>電 子 商 城</title>
+        <link rel="icon" type="image/x-icon" th:href="@{/resources/ico/favicon.ico}">
+        <link rel="stylesheet" type="text/css" th:href="@{/resources/css/styles.css}">
+        <link rel="stylesheet" type="text/css" th:href="@{/resources/css/bootstrap.min.css}">
+        <script th:src="@{/resources/js/jquery-3.6.3.min.js}"></script>
+        <script th:src="@{/resources/js/bootstrap.bundle.min.js}"></script> 
+	</head>
+<body class="d-flex flex-column h-100">
+	<main class="flex-shrink-0">
+    <!-- Navigation-->
+	<div th:insert="navbar :: navbar"></div> 
+	<!-- Blog preview section-->
+	 <section class="py-5">
+                <div class="container px-5 my-5">
+                    <div class="row gx-5 justify-content-center">
+						<h1>可 瀏 覽 的 客 戶 列 表</h1>
+					</div>
+					<form th:action="@{/customer-search}">
+						    搜尋: <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}"/>
+						    &nbsp;
+						    <input type="submit" value="開始搜尋" />
+						    &nbsp;
+						    <input type="button" value="清除搜尋內容" id="btnClear" onclick="clearSearch()" />
+					</form>	
+					<br>
+					<br>	
+						<div class="row">
+							<table class="table table-hover" th:if="${!customers.empty}">
+								<thead>
+									<tr>
+										<th scope="col"> # </th>
+										<th scope="col"> 公 司 名 稱 </th>
+										<th scope="col"> 聯 絡 人 </th>
+										<th scope="col"> 郵 遞 區 號 </th>
+										<th scope="col"> 聯 絡 電 話 </th>
+										<th scope="col"> 城 市 </th>	
+										<th scope="col"> 區 域 </th>	
+										<th scope="col"> 是否接受寄送 </th>					
+										<th sec:authorize="hasRole('EMPLOYEE')" scope="col">     </th>
+										<th sec:authorize="hasRole('ADMIN')" scope="col">     </th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="customer : ${customers}">
+										<td th:text="${customerStat.count}"></td>
+										<td th:text="${customer.companyName}"></td>
+										<td th:text="${customer.contactName}"></td>
+										<td th:text="${customer.postalcode}"></td>
+										<td th:text="${customer.phonenumber}"></td>
+										<td th:text="${customer.city}"></td>
+										<td th:text="${customer.district}"></td>
+										<td th:text="${customer.allInclusive} ? '是' : '否'"></td>				
+										<td sec:authorize="hasRole('EMPLOYEE')"><a class="btn btn-primary" th:href="@{/edit-customer/} + ${customer.customerId}">修改資料</a></td>
+										<td sec:authorize="hasRole('ADMIN')"><a class="btn btn-danger" th:href="@{/delete-customer/} + ${customer.customerId}" onclick="myFunction2()">移除資料</a></td>																													
+									</tr>
+								</tbody>
+							</table>
+						       <script>
+									  function myFunction2() {
+									  let text;
+									  if (confirm("資料確認刪除嗎？") == true) {
+										  window.alert(text = "已刪除資料");
+									  } else {
+										  window.alert(text = "取消刪除資料");	
+										  event.preventDefault();
+										  return false;
+									  }				
+									}
+								</script>
+								<script type="text/javascript">
+								    function clearSearch() {
+								        window.location = "[[@{/customer-search}]]";
+								    }
+								</script>
+						</div>		
+						<div class="row" th:if="${customers.empty}">
+							<h3> 資料表中沒有可以顯示的客戶！ </h3>
+						</div>
+					
+					<div class="row-sm-2">
+						<a th:href="@{/customer-home}" class="btn btn-warning"> 返回 </a>
+					</div>
+				</div>
+		<!-- Call to action-->  
+<!--                     <aside class="bg-primary bg-gradient rounded-3 p-4 p-sm-5 mt-5"> -->
+<!--                         <div class="d-flex align-items-center justify-content-between flex-column flex-xl-row text-center text-xl-start"> -->
+<!--                             <div class="mb-4 mb-xl-0"> -->
+<!--                                 <div class="fs-3 fw-bold text-white">隨時收到最新商品</div> -->
+<!--                                 <div class="text-white-50">註冊以獲得我們寄送的最新產品的消息</div> -->
+<!--                             </div> -->
+<!--                             <div class="ms-xl-4"> -->
+<!--                                 <div class="input-group mb-2"> -->
+<!--                                     <input class="form-control" type="text" placeholder="Email address..." aria-label="Email address..." aria-describedby="button-newsletter" /> -->
+<!--                                     <button class="btn btn-outline-light" id="button-newsletter" type="button" th:href="@{/sign-up}">註冊</button> -->
+<!--                                 </div> -->
+<!--                                 <div class="small text-white-50">我們注重隱私,且絕不會與他人分享您的資料</div> -->
+<!--                             </div> -->
+<!--                         </div> -->
+<!--                     </aside> -->
+               </section> 
+        </main>
+        <!-- Footer-->
+        <div th:insert="footer :: footer"></div>
+</body>
+</html>

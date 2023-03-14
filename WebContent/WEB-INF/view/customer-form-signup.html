@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	<head>
+			<meta charset="UTF-8">
+			<title> 註 冊 頁 </title>
+	        <link rel="icon" type="image/x-icon" th:href="@{/resources/ico/favicon.ico}">
+	        <link rel="stylesheet" type="text/css" th:href="@{/resources/css/bootstrap.min.css}">
+	        <link rel="stylesheet" type="text/css" th:href="@{/resources/css/styles.css}">
+	        <link rel="stylesheet" type="text/css" th:href="@{/resources/css/style.css}">
+	        <link rel="stylesheet" type="text/css" th:href="@{/resources/css/all.css}"/>
+	        <script th:src="@{/resources/js/jquery-3.6.3.min.js}"></script>
+	        <script th:src="@{/resources/js/popper.min.js}"></script>
+	        <script th:src="@{/resources/js/bootstrap.min.js}"></script> 
+	        <script th:src="@{/resources/js/all.js}"></script>    
+	</head>
+<body>
+	<div th:insert="navbar :: navbar"></div>
+	<div class="container">
+		<div class="d-flex justify-content-center h-100">
+			<div class="card">
+				<div class="card-header">
+					<h2> 註 冊 </h2>
+				</div>
+				<div class="card-body">
+					<form action="#" th:action="@{/process-sign-up}" th:object="${user}" method="post">
+
+						<div class="alert alert-danger" role="alert" th:if="${param.differentPasswords}" th:text="${param.differentPasswords}"></div>
+						<div class="alert alert-danger" role="alert" th:if="${param.loginExists}" th:text="${param.loginExists}"></div>
+						
+						<div class="input-group form-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fas fa-user"></i></span>
+							</div>
+							<input type="text" class="form-control" name="login" placeholder="使用者名稱">
+						</div>
+						
+						<div class="input-group form-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fas fa-key"></i></span>
+							</div>
+							<input type="password" class="form-control" name="password" placeholder="密碼">
+						</div>
+						
+						<div class="input-group form-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fas fa-key"></i></span>
+							</div>
+							<input type="password" class="form-control" name="confirmedPassword" placeholder="再輸入一次密碼">
+						</div>
+						
+						<div class="form-group">
+							<input type="submit" value="註冊" class="btn login-button">
+							<a th:href="@{/login}" class="btn btn-warning float-right"> 回前一頁 </a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Footer-->
+        <div th:insert="footer :: footer"></div>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+	<head>
+        <meta charset="utf-8" />
+        <title>電 子 商 城</title>
+        <link rel="icon" type="image/x-icon" th:href="@{/resources/ico/favicon.ico}">
+        <link rel="stylesheet" type="text/css" th:href="@{/resources/css/styles.css}">
+        <link rel="stylesheet" type="text/css" th:href="@{/resources/css/bootstrap.min.css}">
+        <script th:src="@{/resources/js/jquery-3.6.3.min.js}"></script>
+        <script th:src="@{/resources/js/bootstrap.bundle.min.js}"></script>
+	</head>
+	<body class="d-flex flex-column h-100">
+		<main class="flex-shrink-0">
+            <!-- Navigation-->
+            <div th:insert="navbar :: navbar"></div>
+<<<<<<< Updated upstream
+=======
+            
+>>>>>>> Stashed changes
+            <!-- Blog preview section-->
+            <section class="py-5">
+                <div class="container px-5 my-5">
+                    <div class="row gx-5 justify-content-center">
+                        <div class="col-sm">
+							<h1>產品資料編輯</h1>
+							<form action="#" th:action="@{/process-product-form}" th:object="${product}" 
+								method="post" th:accept-charset="utf-8" enctype="multipart/form-data">
+							
+								<div class="form-group">
+									<input type="hidden" class="form-control" th:field="*{id}">
+								</div>
+								<div class="form-group" role="alert" th:if="${#fields.hasErrors('brand.id')}" th:errors="*{brand.id}">
+									<input type="hidden" class="form-control" th:field="*{brand.id != null ? brand.id : 0}">
+								</div>
+								
+								<div class="form-group">
+									<label>品牌</label>
+									<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('brand.brandName')}" th:errors="*{brand.brandName}"></div>
+									<input type="text" class="form-control" th:field="*{brand.brandName}">
+								</div>		
+								
+								<div class="form-group">
+									<label>產品名稱</label>
+									<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('productName')}" th:errors="*{productName}"></div>
+									<input type="text" class="form-control" th:field="*{productName}">
+								</div>
+								
+								<div class="form-group">
+									<label>產品類別</label>
+									<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('productCategory')}" th:errors="*{productCategory}"></div>
+									<input type="text" class="form-control" th:field="*{productCategory}">
+								</div>
+								
+								<div class="form-group">
+									<label>產品圖片</label>
+									<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('productImage')}" th:errors="*{global}"></div>
+									<input type="file" class="form-control" id="upload_file" name="file" accept="image/*;capture=camera" th:field="*{productImage}">
+								</div>
+								
+								<div class="form-group">
+									<label>資訊</label>
+									<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('productDescription')}" th:errors="*{productDescription}"></div>
+									<input type="text" class="form-control" th:field="*{productDescription}">
+								</div>
+								
+								<div class="form-group">
+									<label>價錢</label>
+									<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('productPrice')}" th:errors="*{productPrice}"></div>
+									<input type="number" class="form-control" step="any" min="0" th:field="*{productPrice}">
+								</div>
+								
+								<div class="form-row">
+									<div class="col">
+										<input class="btn btn-success" type="submit" value="提交">
+									</div>
+									<div class="col">
+										<a th:href="@{/showProduct}" class="btn btn-warning float-right">返回</a>
+									</div>
+								</div>
+							</form>
+						</div>
+                    </div>
+                    <!-- Call to action-->                   
+                </div>
+            </section>
+        </main>
+        <!-- Footer-->
+        <div th:insert="footer :: footer"></div>
+	</body>
+</html>

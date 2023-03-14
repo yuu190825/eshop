@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	<head>
+		<meta charset="UTF-8">
+		<title>電 子 商 城</title>
+		<link rel="icon" type="image/x-icon" th:href="@{/resources/ico/favicon.ico}">
+		<link rel="stylesheet" type="text/css" th:href="@{/resources/css/styles.css}">
+		<link rel="stylesheet" type="text/css" th:href="@{/resources/css/bootstrap.min.css}">
+		<script th:src="@{/resources/js/jquery-3.6.3.min.js}"></script>
+		<script th:src="@{/resources/js/bootstrap.bundle.min.js}"></script>
+	</head>
+	<body class="d-flex flex-column h-100">
+		<main class="flex-shrink-0">
+			<!-- Navigation-->
+			<div th:insert="navbar :: navbar"></div>
+			<!-- Blog preview section-->
+			<section class="py-5">
+				<div class="container px-5 my-5">
+					<div class="row gx-5 justify-content-center">
+						<h1>訂單詳細內容</h1>
+					</div>
+
+					<div class="row gx-5 justify-content-center">
+						<table class="table table-hover" th:if="${!orderDetails.empty}">
+							<thead>
+								<tr>
+									<th scope="col">#</th>
+									<th scope="col">產品編號</th>
+									<th scope="col">單價</th>
+									<th scope="col">購買數量</th>
+									<th scope="col">折扣</th>
+									<th scope="col">編輯訂單詳細內容</th>
+									<th scope="col">取消項目</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="orderDetail : ${orderDetails}">
+									<td th:text="${orderDetailStat.count}"></td>
+									<td th:text="${orderDetail.productId}"></td>
+									<td th:text="${#strings.replace(#strings.replace(#numbers.formatCurrency(orderDetail.orderPrice), '¤', '$'), '.00', '')}"></td>
+									<td th:text="${orderDetail.orderQuantity}"></td>
+									<td th:text="${#strings.replace(#strings.replace(#numbers.formatCurrency(orderDetail.discount), '¤', '$'), '.00', '')}"></td>
+									<td><a class="btn btn-primary" th:href="@{/edit-order-detail/} + ${orderDetail.orderDetailId}">編輯</a></td>
+									<td><a class="btn btn-danger" th:href="@{/cancel-order-detail/} + ${orderDetail.orderDetailId} + '/' + ${orderDetail.order.orderId}" onclick="myAsk()">取消</a></td>
+								</tr>
+							</tbody>
+						</table>
+						<script>
+							function myAsk() {
+								if (confirm("您確定要取消此項目嗎？") == false) {
+									event.preventDefault();
+								}
+							}
+						</script>
+					</div>
+
+					<div class="row gx-5 justify-content-center" th:if="${orderDetails.empty}">
+						<h3>沒有任何訂單詳細內容</h3>
+					</div>
+
+					<div class="row gx-5 justify-content-center">
+						<a th:href="@{/show-order}" class="btn btn-warning">返回</a>
+					</div>
+				</div>
+			</section>
+		</main>
+		<!-- Footer-->
+		<div th:insert="footer :: footer"></div>
+	</body>
+</html>

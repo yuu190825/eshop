@@ -1,0 +1,22 @@
+@charset "UTF-8";
+@import "style.css";
+
+html, body {
+	background-image: url("../img/bg1.png"); 
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+  padding-bottom: 75px;
+}
+body {
+  margin-bottom: 75px;
+}
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 75px; /*設定footer本身高度*/
+  margin-top: -75px; /*隨footer高度需做調整*/
+}

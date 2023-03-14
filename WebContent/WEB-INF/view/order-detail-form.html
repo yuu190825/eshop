@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	<head>
+		<meta charset="UTF-8">
+		<title>電 子 商 城</title>
+		<link rel="icon" type="image/x-icon" th:href="@{/resources/ico/favicon.ico}">
+		<link rel="stylesheet" type="text/css" th:href="@{/resources/css/styles.css}">
+		<link rel="stylesheet" type="text/css" th:href="@{/resources/css/bootstrap.min.css}">
+		<script th:src="@{/resources/js/jquery-3.6.3.min.js}"></script>
+		<script th:src="@{/resources/js/bootstrap.bundle.min.js}"></script>
+	</head>
+	<body class="d-flex flex-column h-100">
+		<main class="flex-shrink-0">
+			<!-- Navigation-->
+			<div th:insert="navbar :: navbar"></div>
+			<!-- Blog preview section-->
+			<section class="py-5">
+				<div class="container px-5 my-5">
+					<div class="row gx-5 justify-content-center">
+						<div class="col-sm"></div>
+
+						<div class="col-sm-8">
+							<h1>編輯訂單詳細內容</h1>
+
+							<form action="#"
+								th:action="@{/order-detail-process-form/} + *{order.orderId}"
+								th:object="${orderDetail}" method="post">
+								<div class="form-group">
+									<input type="hidden" class="form-control" th:field="*{orderDetailId}">
+								</div>
+
+								<div class="form-group">
+									<input type="hidden" class="form-control" th:field="*{order.orderId}">
+								</div>
+
+								<div class="form-group">
+									<label>產品編號</label>
+									<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('productId')}" th:errors="*{productId}"></div>
+									<input type="text" class="form-control" th:field="*{productId}">
+								</div>
+
+								<div class="form-group">
+									<label>單價</label>
+									<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('orderPrice')}" th:errors="*{orderPrice}"></div>
+									<input type="number" class="form-control" th:field="*{orderPrice}">
+								</div>
+
+								<div class="form-group">
+									<label>購買數量</label>
+									<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('orderQuantity')}" th:errors="*{orderQuantity}"></div>
+									<input type="number" class="form-control" th:field="*{orderQuantity}">
+								</div>
+
+								<div class="form-group">
+									<label>折扣</label>
+									<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('discount')}" th:errors="*{discount}"></div>
+									<input type="number" class="form-control" th:field="*{discount}">
+								</div>
+
+								<div class="row gx-5 justify-content-center">
+									<div class="col">
+										<input class="btn btn-success float-start" type="submit" value="送出">
+										<a class="btn btn-warning float-end"th:href="@{/show-order}">取消</a>
+									</div>
+								</div>
+							</form>
+						</div>
+
+						<div class="col-sm"></div>
+					</div>
+				</div>
+			</section>
+		</main>
+		<!-- Footer-->
+		<div th:insert="footer :: footer"></div>
+	</body>
+</html>

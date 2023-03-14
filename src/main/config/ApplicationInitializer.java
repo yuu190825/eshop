@@ -1,0 +1,42 @@
+package main.config;
+
+import javax.servlet.Filter;
+
+import org.springframework.web.filter.CharacterEncodingFilter;
+import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+
+/**
+ * 設定檔
+ * @author sam
+ *
+ */
+public class ApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+
+	@Override
+	protected Class<?>[] getRootConfigClasses() {
+		return new Class[] {DatabaseConfig.class, SecurityConfig.class};
+	}
+
+	@Override
+	protected Class<?>[] getServletConfigClasses() {
+		return new Class[] {WebConfig.class};
+	}
+
+	@Override
+	protected String[] getServletMappings() {
+		return new String[] {"/"};
+	}
+	
+	
+	/**
+	 *utf-8 chinese
+	 */
+	@Override
+	protected Filter[] getServletFilters() {
+		final CharacterEncodingFilter encodingFilter = new CharacterEncodingFilter();
+		encodingFilter.setEncoding("UTF-8");
+		encodingFilter.setForceEncoding(true);
+		return new Filter[] {encodingFilter};
+	}
+
+}

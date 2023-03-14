@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	<head>
+			<meta charset="UTF-8">
+	        <title>電 子 商 城</title>
+	        <link rel="icon" type="image/x-icon" th:href="@{/resources/ico/favicon.ico}">
+	        <link rel="stylesheet" type="text/css" th:href="@{/resources/css/style.css}">
+	        <link rel="stylesheet" type="text/css" th:href="@{/resources/css/styles.css}">
+	        <link rel="stylesheet" type="text/css" th:href="@{/resources/css/bootstrap.min.css}">
+	        <script th:src="@{/resources/js/jquery-3.6.3.min.js}"></script>
+	        <script th:src="@{/resources/js/bootstrap.min.js}"></script> 
+	</head>
+<body class="d-flex flex-column h-100">
+	<main class="flex-shrink-0">
+		<!-- Navigation-->
+		<div th:insert="navbar :: navbar"></div>
+		<!-- Blog preview section-->
+		<section class="py-5">
+			<div class="container px-5 my-5">
+				<div class="row gx-5 justify-content-center">
+					<div class="row gx-5 justify-content-center">
+						<h1>新 增 客 戶 個 人 資 料</h1>
+					</div>
+					<form action="#" th:action="@{/process-customer-form}"
+						th:object="${customer}" method="post">
+
+						<div class="form-group">
+							<input type="hidden" class="form-control"
+								th:field="*{customerId}">
+						</div>
+
+						<div class="form-group">
+							<label> 公 司 名 稱 </label> <label>Company Name</label> <input
+								type="text" class="form-control" th:field="*{companyName}">
+							<div class="alert alert-danger" role="alert"
+								th:if="${#fields.hasErrors('companyName')}"
+								th:errors="*{companyName}"></div>
+						</div>
+
+						<div class="form-group">
+							<label> 聯 絡 人 </label> <label>Contact Name</label> <input
+								type="text" class="form-control" th:field="*{contactName}">
+							<div class="alert alert-danger" role="alert"
+								th:if="${#fields.hasErrors('contactName')}"
+								th:errors="*{contactName}"></div>
+						</div>
+
+						<div class="form-group">
+							<label> 郵 遞 區 號 </label> <label>Postal Code</label> <select
+								name="postalcode" class="form-control">
+								<option
+									th:each="postalcode : ${T(main.model.Customer.Postalcode).values()}"
+									th:value="${postalcode}" th:text="${postalcode}"></option>
+							</select>
+						</div>
+
+						<div class="form-group">
+							<label> 聯 絡 電 話 </label> <label>Phone Number</label> <input
+								type="text" class="form-control" th:field="*{phonenumber}">
+							<div class="alert alert-danger" role="alert"
+								th:if="${#fields.hasErrors('phonenumber')}"
+								th:errors="*{phonenumber}"></div>
+						</div>
+
+						<div class="form-group">
+							<label> 城 市 </label> <label>City</label> <select name="city"
+								class="form-control">
+								<option th:each="city : ${T(main.model.Customer.City).values()}"
+									th:value="${city}" th:text="${city}"></option>
+							</select>
+						</div>
+
+						<div class="form-group">
+							<label> 區 域 </label> <label>District</label> <input type="text"
+								class="form-control" th:field="*{district}">
+							<div class="alert alert-danger" role="alert"
+								th:if="${#fields.hasErrors('district')}" th:errors="*{district}"></div>
+						</div>
+
+						<div class="form-group">
+							<label>是否願意接受我們寄送的優惠訊息</label> <input type="checkbox"
+								th:field="*{allInclusive}">
+						</div>
+						<div class="form-row">
+							<div class="col">
+								<input class="btn btn-success" type="submit" value=" 確 定 "
+									onclick="myFunction()">
+								<script>
+									function myFunction() {
+									  let text; 
+									  if (confirm("表單確認後會在正確填寫後送出") == true) {
+// 										  window.alert(text = "提示：若出現error 表示公司名稱.聯絡人.電話三欄的輸入值已存在資料庫中 請重新輸入");
+										  } else {
+											  window.alert(text = "取消送出表單");
+											  event.preventDefault();
+											  return false;
+										   }						
+									   }
+								</script>
+							</div>
+							<div class="col">
+								<a th:href="@{/show-customer-data}"
+									class="btn btn-warning float-right"> 返回 </a>
+							</div>
+						</div>
+					</form>
+					<div class="col-sm"></div>
+				</div>
+			</div>
+			<!-- Call to action-->
+<!-- 			<aside class="bg-primary bg-gradient rounded-3 p-4 p-sm-5 mt-5"> -->
+<!-- 				<div -->
+<!-- 					class="d-flex align-items-center justify-content-between flex-column flex-xl-row text-center text-xl-start"> -->
+<!-- 					<div class="mb-4 mb-xl-0"> -->
+<!-- 						<div class="fs-3 fw-bold text-white">隨時收到最新商品</div> -->
+<!-- 						<div class="text-white-50">註冊以獲得我們寄送的最新產品的消息</div> -->
+<!-- 					</div> -->
+<!-- 					<div class="ms-xl-4"> -->
+<!-- 						<div class="input-group mb-2"> -->
+<!-- 							<input class="form-control" type="text" -->
+<!-- 								placeholder="Email address..." aria-label="Email address..." -->
+<!-- 								aria-describedby="button-newsletter" /> -->
+<!-- 							<button class="btn btn-outline-light" id="button-newsletter" -->
+<!-- 								type="button" th:href="@{/sign-up}">註冊</button> -->
+<!-- 						</div> -->
+<!-- 						<div class="small text-white-50">我們注重隱私,且絕不會與他人分享您的資料</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</aside> -->
+		</section>
+	</main>
+	<!-- Footer-->
+	<div th:insert="footer :: footer"></div>
+
+</body>
+</html>

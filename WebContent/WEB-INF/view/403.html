@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<title> 403 頁 </title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style-bgcolor.css}"/>
+<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+<link rel="stylesheet" type="text/css" th:href="@{/css/all.css}"/>
+<script type="text/javascript" th:src="@{/js/popper.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/jquery-3.4.1.slim.min.js}"></script>
+</head>
+<body>
+	<div class="container">
+	 	<div class="row">
+			<h2> 你沒有權限訪問這個網頁！ </h2>		
+		</div>
+		
+		<div class="row">
+			<a th:href="@{/}" class="btn btn-warning"> 回前一頁 </a>
+		</div>
+   </div>
+</body>
+</html>

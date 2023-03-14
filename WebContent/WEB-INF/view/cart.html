@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+	<head>
+			<meta charset="UTF-8">
+	        <title>電 子 商 城</title>
+	        <link rel="icon" type="image/x-icon" th:href="@{/resources/ico/favicon.ico}">
+	        <link rel="stylesheet" type="text/css" th:href="@{/resources/css/styles.css}">
+	        <link rel="stylesheet" type="text/css" th:href="@{/resources/css/bootstrap.min.css}">
+	        <script th:src="@{/resources/js/jquery-3.6.3.min.js}"></script>
+	        <script th:src="@{/resources/js/bootstrap.bundle.min.js}"></script> 
+	</head>
+<body class="d-flex flex-column h-100">
+	<main class="flex-shrink-0">
+		<!-- Navigation-->
+		<div th:insert="navbar :: navbar"></div>
+            <!-- Blog preview section-->
+            <section class="py-5">
+                <div class="container px-5 my-5">
+                    <div class="row gx-5 justify-content-center">
+						<h1>購物車</h1>
+<!-- 						<h4 th:if="${!login_user.empty}" th:text="${login_user}"></h4> -->
+					</div>
+					
+					<div>
+<!-- 						<form action="#" th:action="@{/add-order/{cartId}}" th:object="${cartForm}" method="post"> -->
+						<form>
+						
+							<div class="row gx-5 justify-content-center">
+								<table class="table table-hover" th:if="${!cartDetails.empty}">
+									<thead>
+					                    <tr>
+					                        <th scope="col">產品編號</th>
+	<!-- 				                        <th scope="col">圖片</th> -->
+	<!-- 				                        <th scope="col">品牌</th> -->
+<!-- 					                        <th scope="col">產品名稱</th> -->
+	<!-- 				                        <th scope="col">價錢</th> -->
+					                        <th scope="col">數量</th>
+	<!-- 				                        <th scope="col">總金額</th> -->
+					                        <th scope="col">編輯</th>
+					                        <th scope="col">刪除</th>
+					                        <th scope="col">顯示</th>
+					                    </tr>
+		                			</thead>
+									<tbody>
+										<tr th:each="cartDetail : ${cartDetails}">
+											<td th:text="${cartDetail.productId}"></td>
+	<!-- 										<a type ="hidden" th:value ="${cartDetail.cart.id}"></a> -->
+<!-- 					                        <td th:text="${product.productName}"></td> -->
+	<!-- 				                        <td th:text="${cartDetail.unitprice}"></td> -->
+					                        <td th:text="${cartDetail.quantity}"></td>
+	<!-- 				                        <td th:text="${cartDetail.totalPrice}"></td> -->
+					                        <td><a class="btn btn-primary" th:href="@{/edit-product/} + ${id}">編輯</a></td>
+					                        <td><a class="btn btn-danger" 
+					                               th:data-confirm-delete="是否刪除商品？"
+					                               onclick="if(!confirm(this.getAttribute('data-confirm-delete')))return false"
+					                               th:href="@{/delete-product/} + ${id}">刪除</a></td>
+											<td><a class="btn btn-success" th:href="@{/show-order-details/} + ${productId}">顯示</a></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						
+							<div class="row gx-5 justify-content-center" th:if="${cartDetails.empty}">
+								<h3>暫無產品</h3>
+							</div>
+						
+	<!-- 					<div class="row gx-5 justify-content-center"> -->
+	<!-- 						<a th:href="@{/}" class="btn btn-warning">返回</a> -->
+	<!-- 					</div> -->
+	<!-- 					<div class="form-row"> -->
+			            	<div class="row gx-5 justify-content-center">
+				                <a th:href="@{/add-order/} + ${cartDetails[0].cart.cartId}"  class="btn btn-outline-success">結帳</a>
+<!-- 				                <input class="btn btn-success" type="submit" value="結帳"> -->
+				                <a th:href="@{/}" class="btn btn-outline-primary">返回</a>
+				            </div>
+				        </form>
+			        </div>
+                    <!-- Call to action-->
+<!--                     <aside class="bg-primary bg-gradient rounded-3 p-4 p-sm-5 mt-5"> -->
+<!-- 						<div -->
+<!-- 							class="d-flex align-items-center justify-content-between flex-column flex-xl-row text-center text-xl-start"> -->
+<!-- 							<div class="mb-4 mb-xl-0"> -->
+<!-- 								<div class="fs-3 fw-bold text-white">隨時收到最新商品</div> -->
+<!-- 								<div class="text-white-50">註冊以獲得我們寄送的最新產品的消息</div> -->
+<!-- 							</div> -->
+<!-- 							<div class="ms-xl-4"> -->
+<!-- 								<div class="input-group mb-2"> -->
+<!-- 									<input class="form-control" type="text" -->
+<!-- 										placeholder="Email address..." aria-label="Email address..." -->
+<!-- 										aria-describedby="button-newsletter" /> -->
+<!-- 									<button class="btn btn-outline-light" id="button-newsletter" -->
+<!-- 										type="button" th:href="@{/sign-up}">註冊</button> -->
+<!-- 								</div> -->
+<!-- 								<div class="small text-white-50">我們注重隱私,且絕不會與他人分享您的資料</div> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</aside> -->
+                </div>
+            </section>
+        </main>
+         <!-- Footer-->
+		<div th:insert="footer :: footer"></div>
+	</body>
+</html>
