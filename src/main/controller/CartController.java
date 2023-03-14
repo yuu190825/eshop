@@ -1,5 +1,6 @@
 package main.controller;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,7 +73,12 @@ public class CartController {
     }
 
     @GetMapping("/show-cartdetail")
-    public String getCart(Model model) {
+    public String getCart(Principal principal, Model model) {
+        // List<CartDetail> cartDetails = cartDetailService.findCartByLogin(principal.getName());
+        // List<CartForm> cartForms = cartDetails.stream()
+        // .map(o -> new CartForm(o.getProductId(), "", "", o.getDiscount(), "", o.getUnitPrice(),
+        // o.getQuantity()))
+        // .collect(Collectors.toList());
         List<CartDetail> cartDetails = cartDetailService.getAll();
         model.addAttribute("cartDetails", cartDetails);
         return "cart";

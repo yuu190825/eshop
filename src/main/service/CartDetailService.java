@@ -13,4 +13,7 @@ public interface CartDetailService {
 	public void saveOrUpdate(CartDetail cartDetail);
 	
 	public void delete(long cartDetailId);
+
+    //public List<CartDetail> findCartByLogin(long user);
+
 }

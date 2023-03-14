@@ -17,11 +17,6 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-/**
- * 設定檔
- * @author sam
- *
- */
 @Configuration
 @EnableWebMvc
 @ComponentScan("main")
@@ -29,10 +24,10 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableTransactionManagement
 @EnableJpaRepositories("main.repository")
 public class DatabaseConfig {
-
+	
 	@Autowired
 	private Environment environment;
-
+	
 	@Bean
 	public DataSource getDataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -41,18 +36,18 @@ public class DatabaseConfig {
 		dataSource.setUsername(environment.getProperty("jdbc.username"));
 		dataSource.setPassword(environment.getProperty("jdbc.password"));
 		return dataSource;
-
+		
 	}
-
+	
 	@Bean(name = "entityManagerFactory")
-	public LocalSessionFactoryBean sessionFactoryBean() {
+	public LocalSessionFactoryBean sessionFactoryBean() {	
 		LocalSessionFactoryBean localSessionFactoryBean = new LocalSessionFactoryBean();
 		localSessionFactoryBean.setDataSource(getDataSource());
 		localSessionFactoryBean.setPackagesToScan(new String[] {"main"});
 		localSessionFactoryBean.setHibernateProperties(hibernateProperties());
 		return localSessionFactoryBean;
 	}
-
+	
 	private final Properties hibernateProperties() {
 		Properties properties = new Properties();
 		properties.put("hibernate.show_sql", environment.getProperty("hibernate.show_sql"));
@@ -60,7 +55,7 @@ public class DatabaseConfig {
 		properties.put("hibernate.hbm2ddl.auto", environment.getProperty("hibernate.hbm2ddl.auto"));
 		return properties;
 	}
-
+	
 	@Bean(name = "transactionManager")
 	public HibernateTransactionManager getTransactionManager() {
 		HibernateTransactionManager transactionManager = new HibernateTransactionManager();
