@@ -1,29 +1,13 @@
 package main.model;
 
+import org.hibernate.annotations.CreationTimestamp;
 
-import java.util.Date;
-
-import java.util.List;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
-
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
+import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Customer {
@@ -49,7 +33,7 @@ public class Customer {
     @NotBlank(message = "{customer.companyName.notblank}")
     @Size(min = 2, max = 20, message = "{customer.name.size}")
     @Column(length = 20)
-    @Pattern(regexp = "^[\\u4e00-\\u9fa5]+$", message = "{customer.companyName.type}")
+    @Pattern(regexp = "^[\\u4e00-\\u9fa5]+\\u516C\\u53F8$", message = "{customer.companyName.type}")
     private String companyName;
 
     @NotBlank(message = "{customer.contactName.notblank}")
@@ -58,7 +42,7 @@ public class Customer {
     @Pattern(regexp = "^[\\u4e00-\\u9fa5]+$", message = "{customer.name.type}")
     private String contactName;
 
-    //	@Pattern(regexp = "^[0-9]{5}$", message = "{customer.postalcode.pattern}")
+    // @Pattern(regexp = "^[0-9]{5}$", message = "{customer.postalcode.pattern}")
     @Column(length = 20)
     private String postalcode;
 
@@ -84,9 +68,7 @@ public class Customer {
     private boolean allInclusive = false;
 
     @ManyToMany
-    @JoinTable(name = "customer2user",
-            joinColumns = @JoinColumn(name = "customerId"),
-            inverseJoinColumns = @JoinColumn(name = "userId"))
+    @JoinTable(name = "customer2user", joinColumns = @JoinColumn(name = "customerId"), inverseJoinColumns = @JoinColumn(name = "userId"))
     private List<User> users;
 
     //	@NotBlank(message = "{customer.contactName.notblank}")
@@ -107,12 +89,15 @@ public class Customer {
     public String getCompanyName() {
         return companyName;
     }
+
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
     }
+
     public String getContactName() {
         return contactName;
     }
+
     public void setContactName(String contactName) {
         this.contactName = contactName;
     }
@@ -120,6 +105,7 @@ public class Customer {
     public String getPhonenumber() {
         return phonenumber;
     }
+
     public void setPhonenumber(String phonenumber) {
         this.phonenumber = phonenumber;
     }
@@ -127,6 +113,7 @@ public class Customer {
     public long getCustomerId() {
         return customerId;
     }
+
     public void setCustomerId(long customerId) {
         this.customerId = customerId;
     }
@@ -134,39 +121,50 @@ public class Customer {
     public User getUser() {
         return user;
     }
+
     public void setUser(User user) {
         this.user = user;
     }
+
     public boolean isAllInclusive() {
         return allInclusive;
     }
+
     public void setAllInclusive(boolean allInclusive) {
         this.allInclusive = allInclusive;
     }
+
     public long getUserId() {
         return userId;
     }
+
     public void setUserId(long userId) {
         this.userId = userId;
     }
+
     public List<User> getUsers() {
         return users;
     }
+
     public void setUsers(List<User> users) {
         this.users = users;
     }
+
     public String getDistrict() {
         return district;
     }
+
     public void setDistrict(String district) {
         this.district = district;
     }
+
     public String getPostalcode() {
         return postalcode;
     }
     public void setPostalcode(String postalcode) {
         this.postalcode = postalcode;
     }
+
     public String getCity() {
         return city;
     }

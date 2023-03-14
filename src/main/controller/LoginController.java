@@ -69,5 +69,5 @@ public class LoginController {
 		userService.createNewAccount(user);
 		return "login";
 	}
-	
+
 }

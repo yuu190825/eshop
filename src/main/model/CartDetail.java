@@ -42,14 +42,9 @@ public class CartDetail {
     @Column(name = "update_date")
     private Date updateDate;
 
-    /* Temp Start */
-    //@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	//@JoinColumn(name = "cart_cart_id")
-	//private Cart cart;
-    @ManyToOne //(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "cart_id")
     private Cart cart;
-    /* Temp End */
 
     public long getCartDetailId() {
         return cartDetailId;
