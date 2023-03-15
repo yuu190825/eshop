@@ -1,74 +1,72 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:th="http://www.thymeleaf.org"
-	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head>
-	<meta charset="UTF-8">
-	<title>電 子 商 城</title>
-	<link rel="icon" type="image/x-icon" th:href="@{/resources/ico/favicon.ico}">
-	<link rel="stylesheet" type="text/css" th:href="@{/resources/css/styles.css}">
-	<link rel="stylesheet" type="text/css" th:href="@{/resources/css/bootstrap.min.css}">
-	<script th:src="@{/resources/js/jquery-3.6.3.min.js}"></script>
-	<script th:src="@{/resources/js/bootstrap.bundle.min.js}"></script>
-</head>
-<body class="d-flex flex-column h-100">
-<main class="flex-shrink-0">
-	<!-- Navigation-->
-	<div th:insert="navbar :: navbar"></div>
-	<!-- Blog preview section-->
-	<section class="py-5">
-		<div class="container px-5 my-5">
-			<div class="row gx-5 justify-content-center">
-				<h1>所有訂單</h1>
-			</div>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	<head>
+		<meta charset="UTF-8">
+		<title>eshop</title>
+		<link rel="icon" type="image/x-icon" th:href="@{/resources/ico/favicon.ico}">
+        <link rel="stylesheet" type="text/css" th:href="@{/resources/css/bootstrap.min.css}">
+		<link rel="stylesheet" type="text/css" th:href="@{/resources/css/styles.css}">
+        <script th:src="@{/resources/js/bootstrap.bundle.min.js}"></script>
+		<script th:src="@{/resources/js/jquery-3.6.3.min.js}"></script>
+	</head>
+	<body class="d-flex flex-column h-100">
+		<main class="flex-shrink-0">
+			<!-- Navigation -->
+			<div th:insert="navbar :: navbar"></div>
+			<!-- Blog preview section -->
+			<section class="py-5">
+				<div class="container px-5 my-5">
+					<div class="row gx-5 justify-content-center">
+						<h1>所有訂單</h1>
+					</div>
 
-			<div class="row gx-5 justify-content-center">
-				<table class="table table-hover" th:if="${!orders.empty}">
-					<thead>
-					<tr>
-						<th scope="col">#</th>
-						<th scope="col">訂單日期</th>
-						<th scope="col">客戶編號</th>
-						<th scope="col">付款方式</th>
-						<th scope="col">總額</th>
-						<th scope="col">編輯訂單</th>
-						<th scope="col">取消訂單</th>
-						<th scope="col">訂單詳細內容</th>
-					</tr>
-					</thead>
-					<tbody>
-					<tr th:each="order : ${orders}">
-						<td th:text="${orderStat.count}"></td>
-						<td th:text="${#dates.format(order.orderDate, 'yyyy-MM-dd')}"></td>
-						<td th:text="${order.customerId}"></td>
-						<td th:text="${order.payment}"></td>
-						<td th:text="${#strings.replace(#strings.replace(#numbers.formatCurrency(order.amount), '¤', '$'), '.00', '')}"></td>
-						<td><a class="btn btn-primary" th:href="@{/edit-order/} + ${order.orderId}">編輯</a></td>
-						<td><a class="btn btn-danger" th:href="@{/cancel-order/} + ${order.orderId}" onclick="myAsk()">取消</a></td>
-						<td><a class="btn btn-success" th:href="@{/show-order-detail/} + ${order.orderId}">顯示</a></td>
-					</tr>
-					</tbody>
-				</table>
-				<script>
+					<div class="row gx-5 justify-content-center">
+						<table class="table table-hover" th:if="${!orders.empty}">
+							<thead>
+								<tr>
+									<th scope="col">#</th>
+									<th scope="col">訂單日期</th>
+									<th scope="col">客戶編號</th>
+									<th scope="col">付款方式</th>
+									<th scope="col">總額</th>
+									<th scope="col">編輯訂單</th>
+									<th scope="col">取消訂單</th>
+									<th scope="col">訂單詳細內容</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="order : ${orders}">
+									<td th:text="${orderStat.count}"></td>
+									<td th:text="${#dates.format(order.orderDate, 'yyyy-MM-dd')}"></td>
+									<td th:text="${order.customerId}"></td>
+									<td th:text="${order.payment}"></td>
+									<td th:text="${#strings.replace(#strings.replace(#numbers.formatCurrency(order.amount), '¤', '$'), '.00', '')}"></td>
+									<td><a class="btn btn-primary" th:href="@{/edit-order/} + ${order.orderId}">編輯</a></td>
+									<td><a class="btn btn-danger" th:href="@{/cancel-order/} + ${order.orderId}" onclick="myAsk()">取消</a></td>
+									<td><a class="btn btn-success" th:href="@{/show-order-detail/} + ${order.orderId}">顯示</a></td>
+								</tr>
+							</tbody>
+						</table>
+						<script>
 							function myAsk() {
 								if (confirm("您確定要取消訂單嗎？") == false) {
 									event.preventDefault();
 								}
 							}
 						</script>
-			</div>
+					</div>
 
-			<div class="row gx-5 justify-content-center" th:if="${orders.empty}">
-				<h3>沒有任何訂單</h3>
-			</div>
+					<div class="row gx-5 justify-content-center" th:if="${orders.empty}">
+						<h3>沒有任何訂單</h3>
+					</div>
 
-			<div class="row gx-5 justify-content-center">
-				<a th:href="@{/}" class="btn btn-warning">回首頁</a>
-			</div>
-		</div>
-	</section>
-</main>
-<!-- Footer-->
-<div th:insert="footer :: footer"></div>
-</body>
+					<div class="row gx-5 justify-content-center">
+						<a th:href="@{/}" class="btn btn-warning">回首頁</a>
+					</div>
+				</div>
+			</section>
+		</main>
+		<!-- Footer -->
+		<div th:insert="footer :: footer"></div>
+	</body>
 </html>
