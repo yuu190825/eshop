@@ -16,6 +16,7 @@ public class LoginController {
 
 	@Autowired
 	private UserService userService;
+	//public UserService userService;
 
 	/**
 	 * @return

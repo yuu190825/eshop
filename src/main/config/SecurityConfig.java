@@ -27,7 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	public PasswordEncoder passwordEncoder() {
 		return PasswordEncoderFactories.createDelegatingPasswordEncoder();
 	}
-	
+
 	@Bean
 	public AccessDeniedHandler accessDeniedHandler() {
 		return new EshopAccessDeniedHandler();
@@ -86,5 +86,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				//.exceptionHandling().accessDeniedPage("/forbidden");
 				.exceptionHandling().accessDeniedHandler(accessDeniedHandler());
 	}
-	
+
 }

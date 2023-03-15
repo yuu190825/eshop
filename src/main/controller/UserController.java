@@ -5,7 +5,7 @@ import org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMappi
 
 public class UserController {
 
-    @Autowired
-    RequestMappingInfoHandlerMapping requestMappingInfoHandlerMapping;
+	@Autowired
+	RequestMappingInfoHandlerMapping requestMappingInfoHandlerMapping;
 
 }

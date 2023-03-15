@@ -23,8 +23,7 @@ public class CartForm {
         super();
     }
 
-    public CartForm(long productId, String productName, ProductImage productImage, BigDecimal discount,
-            String productDescription, BigDecimal productPrice, int quantity) {
+    public CartForm(long productId, String productName, ProductImage productImage, BigDecimal discount, String productDescription, BigDecimal productPrice, int quantity) {
         super();
         this.productId = productId;
         this.productName = productName;

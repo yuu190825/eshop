@@ -20,14 +20,15 @@ public class Product {
     @Column(name = "product_id")
 	private long productId;
 
-	@Column(name = "product_category")
-	private String productCategory;
+    @Column(name = "product_category")
+    private String productCategory;
 
 	@Column(name = "product_name",length = 100)
     @NotBlank(message = "{product.name.notblank}")
     @Size(min = 2, message = "{product.name.size}")
     private String productName;
 
+	//@JoinColumn(name = "product_image_id")
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@Column(name = "product_image")
 	private ProductImage productImage;
@@ -40,7 +41,7 @@ public class Product {
 	@Column(name = "product_price")
 	private BigDecimal productPrice;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "brand_id")// 物件"brand"加底限"_"加物件欄位 "id"(PS:id欄位名稱)
 	private Brand brand;
     

@@ -2,9 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	  xmlns:th="http://www.thymeleaf.org">
 	<head>
-        <meta charset="utf-8" />
-        <title>eshop</title>
+		<meta charset="utf-8" />
+		<title>eshop</title>
         <link rel="icon" type="image/x-icon" th:href="@{/resources/ico/favicon.ico}">
+        <link rel="stylesheet" type="text/css" th:href="@{/resources/css/styles.css}">
         <link rel="stylesheet" type="text/css" th:href="@{/resources/css/bootstrap.min.css}">
         <script th:src="@{/resources/js/jquery-3.6.3.min.js}"></script>
         <script th:src="@{/resources/js/bootstrap.bundle.min.js}"></script>
@@ -70,7 +71,7 @@
 										<input class="btn btn-success" type="submit" value="提交">
 									</div>
 									<div class="col">
-										<a th:href="@{/}" class="btn btn-warning float-right">返回</a>
+										<a th:href="@{/showProduct}" class="btn btn-warning float-right">返回</a>
 									</div>
 								</div>
 								
@@ -78,7 +79,7 @@
 						</div>
                     </div>
                     <!-- Call to action-->
-                    <aside class="bg-primary bg-gradient rounded-3 p-4 p-sm-5 mt-5">
+					<aside class="bg-primary bg-gradient rounded-3 p-4 p-sm-5 mt-5">
                         <div class="d-flex align-items-center justify-content-between flex-column flex-xl-row text-center text-xl-start">
                             <div class="mb-4 mb-xl-0">
                                 <div class="fs-3 fw-bold text-white">New products, delivered to you.</div>

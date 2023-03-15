@@ -9,29 +9,28 @@ import java.util.Date;
 @Entity
 @Table(name = "cart_detail")
 public class CartDetail {
-	
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     // @NotBlank(message = "{cart.productId.notblank}")
-	@Column(name = "cart_detail_id")
-	private long cartDetailId;
-	
+    @Column(name = "cart_detail_id")
+    private long cartDetailId;
+
     // @NotBlank(message = "{cart.productId.notblank}")
-	@Column(name = "product_id")
-	private long productId;
-	
+    @Column(name = "product_id")
+    private long productId;
+
     // @NotBlank(message = "{cart.quantity.notblank}")
-	@Column(name = "quantity")
+    @Column(name = "quantity")
     private int quantity;
-	
+
     // @NotBlank(message = "{cart.name.notblank}")
-	@Column(name = "unit_price")
-	private BigDecimal unitPrice;
-	
+    @Column(name = "unit_price")
+    private BigDecimal unitPrice;
+
     // @NotBlank(message = "{cart.name.notblank}")
-	private BigDecimal discount;
-	
+    private BigDecimal discount;
+
     @Temporal(TemporalType.TIMESTAMP)
     @CreationTimestamp
     @Column(name = "create_date")
