@@ -1,18 +1,9 @@
 package main.model;
 
-import java.util.Date;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
+
+import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "role")
@@ -22,16 +13,16 @@ public class Role {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "user_id")
 	private long userId;
-	
+
 	private String login;
-	
+
 	private String role;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
     @CreationTimestamp
     @Column(name = "create_date")
 	private Date createDate;
-    
+
 	@Temporal(TemporalType.TIMESTAMP)
     @CreationTimestamp
     @Column(name = "update_date")
@@ -85,5 +76,4 @@ public class Role {
 		this.updateDate = updateDate;
 	}
 
-	
 }

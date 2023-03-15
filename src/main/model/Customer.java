@@ -71,9 +71,9 @@ public class Customer {
 	@JoinTable(name = "customer2user", joinColumns = @JoinColumn(name = "customerId"), inverseJoinColumns = @JoinColumn(name = "userId"))
 	private List<User> users;
 
-	//	@NotBlank(message = "{customer.contactName.notblank}")
-//	@Size(min = 2, max = 20, message = "{customer.name.size}")
-//	@Column(length = 20)
+	//@NotBlank(message = "{customer.contactName.notblank}")
+	//@Size(min = 2, max = 20, message = "{customer.name.size}")
+	//@Column(length = 20)
 	private String keyword;
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -161,6 +161,7 @@ public class Customer {
 	public String getPostalcode() {
 		return postalcode;
 	}
+
 	public void setPostalcode(String postalcode) {
 		this.postalcode = postalcode;
 	}
@@ -168,24 +169,31 @@ public class Customer {
 	public String getCity() {
 		return city;
 	}
+
 	public void setCity(String city) {
 		this.city = city;
 	}
+
 	public Date getCreateDate() {
 		return createDate;
 	}
+
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
+
 	public Date getUpdateDate() {
 		return updateDate;
 	}
+
 	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
 	}
+
 	public String getKeyWord() {
 		return keyword;
 	}
+
 	public void setKeyWord(String keyWord) {
 		this.keyword = keyWord;
 	}

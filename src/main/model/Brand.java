@@ -51,9 +51,13 @@ public class Brand {
 		this.id = id;
 	}
 
-	public String getBrandName() { return brandName; }
+	public String getBrandName() {
+		return brandName;
+	}
 
-	public void setBrandName(String brandName) { this.brandName = brandName; }
+	public void setBrandName(String brandName) {
+		this.brandName = brandName;
+	}
 
 	public String getBrandDescription() {
 		return brandDescription;

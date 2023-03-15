@@ -14,7 +14,7 @@ import org.hibernate.annotations.CreationTimestamp;
 @Entity
 @Table(name = "product")
 public class Product {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_id")
@@ -32,7 +32,7 @@ public class Product {
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@Column(name = "product_image")
 	private ProductImage productImage;
-	
+
 	@Column(name = "product_description")
     private String productDescription;
 
@@ -44,12 +44,12 @@ public class Product {
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "brand_id")// 物件"brand"加底限"_"加物件欄位 "id"(PS:id欄位名稱)
 	private Brand brand;
-    
+
 	@Temporal(TemporalType.TIMESTAMP)
     @CreationTimestamp
     @Column(name = "create_date")
 	private Date createDate;
-    
+
 	@Temporal(TemporalType.TIMESTAMP)
     @CreationTimestamp
     @Column(name = "update_date")

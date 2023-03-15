@@ -5,11 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import main.model.Role;
 
-/**
- * 登入角色repository
- * @author sam
- *
- */
 @Repository
 public interface RoleRepository extends JpaRepository<Role, Long>{
 

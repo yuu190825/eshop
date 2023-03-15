@@ -14,15 +14,15 @@ public interface CustomerService {
 
 	public void delete(long customerId);
 
-//	public Customer getByIdWithComments(long customerId);
+	//public Customer getByIdWithComments(long customerId);
 
 	public void addUserToCustomer(long customerId, String login);
 
-	// public long findByUser(long user);
+	//public long findByUser(long user);
 
 	public Customer getByUserId(long userId);
 
-//	public void addUserToCustomer(long customerId, long userId);
+	//public void addUserToCustomer(long customerId, long userId);
 
 	public List<Customer> listAll(String keyword);
 

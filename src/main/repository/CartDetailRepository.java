@@ -12,8 +12,8 @@ import main.model.CartDetail;
 @Repository
 public interface CartDetailRepository extends JpaRepository<CartDetail, Long> {
 
-//	@Query("from CartDetail c where c.cart.cartId = :cart.cartId")
-//  public List<CartDetail> getByCartId(@Param("cart.cartId") long cartId);
+    //@Query("from CartDetail c where c.cart.cartId = :cart.cartId")
+    //public List<CartDetail> getByCartId(@Param("cart.cartId") long cartId);
 
     @Query("from Cart c where c.customerId = :customerId")
     public List<CartDetail> getByCustomerId(@Param("customerId") long login);

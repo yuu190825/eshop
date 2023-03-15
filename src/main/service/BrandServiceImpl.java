@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 @Transactional
 public class BrandServiceImpl implements BrandService {
-	
+
 	@Autowired
 	private BrandRepository brandRepository;
 

@@ -13,16 +13,16 @@ import main.model.Customer;
 
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
-//	@Query("from Customer c left join fetch c.comments where c.customerId = :customerId")
-//	public Customer getByIdWithComments(@Param("customerId") long customerId);
+	//@Query("from Customer c left join fetch c.comments where c.customerId = :customerId")
+	//public Customer getByIdWithComments(@Param("customerId") long customerId);
 
-	// @Query("from User u where u.login = :login")
-	// public Customer getByUserId(@Param("login") String login);
+	//@Query("from User u where u.login = :login")
+	//public Customer getByUserId(@Param("login") String login);
 
 	@Query("from Customer c where c.userId = :userId")
 	public List<Customer> getByUserId(@Param("userId") long userId);
 
-//	public List<Customer> findAll();
+	//public List<Customer> findAll();
 
 	@Query("SELECT c FROM Customer c WHERE CONCAT(c.companyName, c.contactName, c.phonenumber) LIKE %?1%")
 	public List<Customer> search(@Param("keyword") String keyword);

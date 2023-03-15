@@ -41,7 +41,7 @@ public class CustomerServiceImpl implements CustomerService {
 		Date setDate = new Date();
 		if (customer.getCustomerId()!=0) {
 			customer.setUpdateDate(setDate);
-//	            customer.getUser().setUpdateTime(setDate);
+			//customer.getUser().setUpdateTime(setDate);
 		} else {
 			customer.setCreateDate(setDate);
 		}

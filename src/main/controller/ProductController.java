@@ -32,7 +32,7 @@ public class ProductController {
 
     @Autowired
     private ProductService productService;
-    
+
 	/**顯示所有產品
 	 * @param model
 	 * @return
@@ -44,7 +44,7 @@ public class ProductController {
         model.addAttribute("login_user", principal.getName());
 		return "product";
 	}
-	
+
 	/**新增產品
 	 * @param model
 	 * @return 產品訊息表單
@@ -54,7 +54,7 @@ public class ProductController {
 		model.addAttribute("product", new Product());
 		return "product-form";
 	}
-	
+
 	/**產品訊息表單
 	 * @param product
 	 * @param model
@@ -122,7 +122,6 @@ public class ProductController {
 		byte[] bytes = file.getBytes();
 		String encodedString = Base64.getEncoder().encodeToString(bytes);
 
-
 		//prepare productImage
 		ProductImage productImage = new ProductImage();
 
@@ -145,5 +144,5 @@ public class ProductController {
 		productService.saveOrUpdate(product);
 		return "redirect:show-products";
 	}
-    
+
 }

@@ -15,11 +15,10 @@ public class ProductImage {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "image_id")
 	private long imageId;
-	
-    
+
     @Column(name = "image_String", columnDefinition="MEDIUMTEXT")
     private String imageBase64String;
-    
+
 	@Column(name = "file_name")
 	private String fileName;
 
@@ -46,5 +45,5 @@ public class ProductImage {
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
 	}
-	
+
 }
