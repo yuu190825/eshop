@@ -3,14 +3,16 @@
 	  xmlns:th="http://www.thymeleaf.org"
 	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 	<head>
-			<meta charset="UTF-8">
-	        <title>電 子 商 城</title>
-	        <link rel="icon" type="image/x-icon" th:href="@{/resources/ico/favicon.ico}">
-	        <link rel="stylesheet" type="text/css" th:href="@{/resources/css/style.css}">
-	        <link rel="stylesheet" type="text/css" th:href="@{/resources/css/styles.css}">
-	        <link rel="stylesheet" type="text/css" th:href="@{/resources/css/bootstrap.min.css}">
-	        <script th:src="@{/resources/js/jquery-3.6.3.min.js}"></script>
-	        <script th:src="@{/resources/js/bootstrap.min.js}"></script> 
+		<meta charset="UTF-8">
+		<title>電 子 商 城</title>
+		<link rel="icon" type="image/x-icon" th:href="@{/resources/ico/favicon.ico}">
+		<link rel="stylesheet" type="text/css" th:href="@{/resources/css/style.css}">
+		<link rel="stylesheet" type="text/css" th:href="@{/resources/css/styles.css}">
+		<link rel="stylesheet" type="text/css" th:href="@{/resources/css/bootstrap.min.css}">
+		<script th:src="@{/resources/js/jquery-3.6.3.min.js}"></script>
+		<script th:src="@{/resources/js/bootstrap.bundle.min.js}"></script>
+		<script th:src="@{/resources/js/popper.min.js}"></script>
+		<script th:src="@{/resources/js/bootstrap.min.js}"></script>
 	</head>
 <body class="d-flex flex-column h-100">
 	<main class="flex-shrink-0">
@@ -27,61 +29,56 @@
 						th:object="${customer}" method="post">
 
 						<div class="form-group">
-							<input type="hidden" class="form-control"
-								th:field="*{customerId}">
+							<input type="hidden" class="form-control" th:field="*{customerId}">
 						</div>
-
+										
 						<div class="form-group">
-							<label> 公 司 名 稱 </label> <label>Company Name</label> <input
-								type="text" class="form-control" th:field="*{companyName}">
-							<div class="alert alert-danger" role="alert"
-								th:if="${#fields.hasErrors('companyName')}"
-								th:errors="*{companyName}"></div>
+							<label> 公 司 名 稱 </label> <label>Company Name</label> 
+							<input type="text" class="form-control" th:field="*{companyName}">
+							<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('companyName')}" th:errors="*{companyName}"></div>
 						</div>
-
+<!-- 						<div class="alert alert-danger" role="alert" th:if="${param.companyNameExists}" th:text="${param.companyNameExists}"></div> -->
+						
 						<div class="form-group">
-							<label> 聯 絡 人 </label> <label>Contact Name</label> <input
-								type="text" class="form-control" th:field="*{contactName}">
-							<div class="alert alert-danger" role="alert"
-								th:if="${#fields.hasErrors('contactName')}"
-								th:errors="*{contactName}"></div>
+							<label> 聯 絡 人 </label> <label>Contact Name</label> 
+							<input type="text" class="form-control" th:field="*{contactName}">
+							<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('contactName')}" th:errors="*{contactName}"></div>
 						</div>
-
+<!-- 						<div class="alert alert-danger" role="alert" th:if="${param.contactNameExists}" th:text="${param.contactNameExists}"></div> -->
+						
 						<div class="form-group">
-							<label> 郵 遞 區 號 </label> <label>Postal Code</label> <select
-								name="postalcode" class="form-control">
+							<label> 郵 遞 區 號 </label> <label>Postal Code</label> 
+							<select name="postalcode" class="form-control">
 								<option
 									th:each="postalcode : ${T(main.model.Customer.Postalcode).values()}"
 									th:value="${postalcode}" th:text="${postalcode}"></option>
 							</select>
 						</div>
-
+						
 						<div class="form-group">
-							<label> 聯 絡 電 話 </label> <label>Phone Number</label> <input
-								type="text" class="form-control" th:field="*{phonenumber}">
-							<div class="alert alert-danger" role="alert"
-								th:if="${#fields.hasErrors('phonenumber')}"
-								th:errors="*{phonenumber}"></div>
+							<label> 聯 絡 電 話 </label> <label>Phone Number</label> 
+							<input type="text" class="form-control" th:field="*{phonenumber}">
+							<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('phonenumber')}" th:errors="*{phonenumber}"></div>
 						</div>
+<!-- 						<div class="alert alert-danger" role="alert" th:if="${param.phonenumberExists}" th:text="${param.phonenumberExists}"></div> -->
 
 						<div class="form-group">
-							<label> 城 市 </label> <label>City</label> <select name="city"
-								class="form-control">
+							<label> 城 市 </label> <label>City</label>
+							<select name="city" class="form-control">
 								<option th:each="city : ${T(main.model.Customer.City).values()}"
 									th:value="${city}" th:text="${city}"></option>
 							</select>
 						</div>
 
 						<div class="form-group">
-							<label> 區 域 </label> <label>District</label> <input type="text"
-								class="form-control" th:field="*{district}">
-							<div class="alert alert-danger" role="alert"
-								th:if="${#fields.hasErrors('district')}" th:errors="*{district}"></div>
+							<label> 區 域 </label> <label>District</label>
+							<input type="text" class="form-control" th:field="*{district}">
+							<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('district')}" th:errors="*{district}"></div>
 						</div>
 
 						<div class="form-group">
-							<label>是否願意接受我們寄送的優惠訊息</label> <input type="checkbox"
-								th:field="*{allInclusive}">
+							<label>是否願意接受我們寄送的優惠訊息</label>
+							<input type="checkbox" th:field="*{allInclusive}">
 						</div>
 						<div class="form-row">
 							<div class="col">
@@ -99,10 +96,9 @@
 										   }						
 									   }
 								</script>
-							</div>
-							<div class="col">
-								<a th:href="@{/show-customer-data}"
-									class="btn btn-warning float-right"> 返回 </a>
+ 							</div> -->
+ 							<div class="col"> -->
+								<a th:href="@{/show-customer-data}" class="btn btn-warning float-right"> 返回 </a>
 							</div>
 						</div>
 					</form>
@@ -133,6 +129,5 @@
 	</main>
 	<!-- Footer-->
 	<div th:insert="footer :: footer"></div>
-
 </body>
 </html>

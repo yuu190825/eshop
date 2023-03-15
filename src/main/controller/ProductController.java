@@ -94,14 +94,14 @@ public class ProductController {
         return "redirect:/showProduct";
     }
 
-	@GetMapping("/product-home")
+    @GetMapping("/product-home")
 	public String showProductsOnHomePage(Model model) {
 		List<Product> products=productService.getAllWithImage();
 		model.addAttribute("products", products);
 		return "home";
 	}
 
-	@PostMapping("/save-product")
+    @PostMapping("/save-product")
 	public String saveProductDataWithImage(@Valid @ModelAttribute Product product, BindingResult bindingResult, @RequestPart @Valid MultipartFile file, Errors errors) throws IOException {
 
 		//verify if uploaded multipart file is null
@@ -128,6 +128,7 @@ public class ProductController {
 
 		//check if this product id exists
 		Product existingProduct = productService.getByIdWithImage(product.getProductId());
+		//Product existingProduct = productService.getByIdWithImage(product.getId());
 		//get existing productImage if product id exists
 		if(existingProduct != null)	{
 			productImage = existingProduct.getProductImage();

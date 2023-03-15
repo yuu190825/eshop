@@ -14,27 +14,27 @@ import java.util.List;
 @Transactional
 public class OrderDetailServiceImpl implements OrderDetailService {
 
-    @Autowired
-    private OrderDetailDAO orderDetailDAO;
+	@Autowired
+	private OrderDetailDAO orderDetailDAO;
 
-    @Override
-    public OrderDetail getById(long orderDetailId) {
-        return orderDetailDAO.getById(orderDetailId);
-    }
+	@Override
+	public OrderDetail getById(long orderDetailId) {
+		return orderDetailDAO.getById(orderDetailId);
+	}
 
-    @Override
-    public List<OrderDetail> getByOrderId(long orderId) {
-        return orderDetailDAO.getByOrderId(orderId);
-    }
+	@Override
+	public List<OrderDetail> getByOrderId(long orderId) {
+		return orderDetailDAO.getByOrderId(orderId);
+	}
 
-    @Override
-    public void saveOrUpdate(OrderDetail orderDetail) {
-        orderDetailDAO.saveOrUpdate(orderDetail);
-    }
+	@Override
+	public void saveOrUpdate(OrderDetail orderDetail) {
+		orderDetailDAO.saveOrUpdate(orderDetail);
+	}
 
-    @Override
-    public void delete(long orderDetailId) {
-        orderDetailDAO.delete(orderDetailId);
-    }
+	@Override
+	public void delete(long orderDetailId) {
+		orderDetailDAO.delete(orderDetailId);
+	}
 
 }

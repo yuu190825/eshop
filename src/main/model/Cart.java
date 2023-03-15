@@ -14,36 +14,36 @@ import java.util.List;
 @Proxy(lazy = false)
 public class Cart {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "cart_id")
-	private long cartId;
-	
-/**	@Pattern(regexp = "^[a-zA-Z]{2}-[0-9]{2}[a-zA-Z]{1}$", message = "{cart.cid.pattern}")
-	@Size(min = 5, max = 20, message = "{cart.cid.size}")
-	@Column(name = "customer_id")
-	private String customerId;
-*/	
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "cart_id")
+    private long cartId;
+
+    /**	@Pattern(regexp = "^[a-zA-Z]{2}-[0-9]{2}[a-zA-Z]{1}$", message = "{cart.cid.pattern}")
+     @Size(min = 5, max = 20, message = "{cart.cid.size}")
+     @Column(name = "customer_id")
+     private String customerId;
+     */
 
     @Column(name = "customer_id")
     private long customerId;
 
-	@Min(value = 0, message = "{cart.amount}")
-	@Column(name = "amount")
-	private BigDecimal amount = new BigDecimal("0");
-	
-	@Temporal(TemporalType.TIMESTAMP)
+    @Min(value = 0, message = "{cart.amount}")
+    @Column(name = "amount")
+    private BigDecimal amount = new BigDecimal("0");
+
+    @Temporal(TemporalType.TIMESTAMP)
     @CreationTimestamp
     @Column(name = "create_date")
-	private Date createDate;
-    
-	@Temporal(TemporalType.TIMESTAMP)
+    private Date createDate;
+
+    @Temporal(TemporalType.TIMESTAMP)
     @CreationTimestamp
     @Column(name = "update_date")
-	private Date updateDate;
+    private Date updateDate;
 
     @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-	private List<CartDetail> cartDetails;
+    private List<CartDetail> cartDetails;
 
     public long getCartId() {
         return cartId;

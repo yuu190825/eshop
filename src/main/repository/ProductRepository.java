@@ -16,10 +16,10 @@ import main.model.Product;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
-    @EntityGraph(attributePaths = { "productImage" })
-    List<Product> findByIdIsNotNull();
+	@EntityGraph(attributePaths = { "productImage" })
+	List<Product> findByIdIsNotNull();
 
-    //改 left join, 才能在購物車尚未有購買項目的時候(CartDetail == null)的時候，也能被撈出來
+	//改 left join, 才能在購物車尚未有購買項目的時候(CartDetail == null)的時候，也能被撈出來
 //	@Query("from Cart c left join fetch c.CartDetail where c.customerId = :customerId")
 //	public Cart getByCustomerId(@Param("customerId") long customerId);
 //	@Query("from Product p left join fetch p.Brand where p.id = :id")

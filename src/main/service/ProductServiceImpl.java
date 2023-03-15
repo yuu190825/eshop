@@ -1,15 +1,13 @@
 package main.service;
 
-import java.util.Date;
-import java.util.List;
-
-import javax.transaction.Transactional;
-
+import main.model.Product;
+import main.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import main.model.Product;
-import main.repository.ProductRepository;
+import javax.transaction.Transactional;
+import java.util.Date;
+import java.util.List;
 
 @Service
 @Transactional
@@ -30,12 +28,12 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public void saveOrUpdate(Product product) {
-		Date dateTimeDate = new Date();
+        Date dateTimeDate = new Date();
 		if (product.getProductId()!= 0) {
-			product.setUpdateDate(dateTimeDate);
+            product.setUpdateDate(dateTimeDate);
 		}else {
-			product.setCreateDate(dateTimeDate);
-			product.getBrand().setCreateDate(dateTimeDate);
+            product.setCreateDate(dateTimeDate);
+            product.getBrand().setCreateDate(dateTimeDate);
 		}
 		productRepository.save(product);
 	}

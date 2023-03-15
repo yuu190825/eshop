@@ -50,12 +50,24 @@
 	<!-- 				                        <td th:text="${cartDetail.unitprice}"></td> -->
 					                        <td th:text="${cartDetail.quantity}"></td>
 	<!-- 				                        <td th:text="${cartDetail.totalPrice}"></td> -->
-											<td><a class="btn btn-primary" th:href="@{/edit-product/} + ${product.productId}">編輯</a></td>
-											<td><a class="btn btn-danger"
-												   th:data-confirm-delete="是否刪除商品？"
-												   onclick="if(!confirm(this.getAttribute('data-confirm-delete')))return false"
-												   th:href="@{/delete-product/} + ${product.productId}">刪除</a></td>
-											<td><a class="btn btn-success" th:href="@{/show-order-details/} + ${product.id}">顯示</a></td>
+	<!-- 				                        <td><a class="btn btn-primary" th:href="@{/edit-product/} + ${product.productId}">編輯</a></td> -->
+	<!-- 				                        <td><a class="btn btn-danger" -->
+	<!-- 				                               th:data-confirm-delete="是否刪除商品？" -->
+	<!-- 				                               onclick="if(!confirm(this.getAttribute('data-confirm-delete')))return false" -->
+	<!-- 				                               th:href="@{/delete-product/} + ${product.productId}">刪除</a></td> -->
+	<!-- 										<td><a class="btn btn-success" th:href="@{/show-order-details/} + ${product.id}">顯示</a></td> -->
+					                        <td><a class="btn btn-primary" th:href="@{/edit-cart-detail/} + ${cartDetailId}">編輯</a></td>
+					                        <td><a class="btn btn-danger" 
+					                               th:data-confirm-delete="是否刪除商品？"
+					                               onclick="if(!confirm(this.getAttribute('data-confirm-delete')))return false"
+					                               th:href="@{/delete-cart-detail/} + ${cartDetailId}">刪除</a></td>					                              					                       				                               
+											<td><a class="btn btn-success" th:href="@{/show-cart-detail}">顯示</a></td>
+	<!--										<td><a class="btn btn-primary" th:href="@{/edit-product/} + ${id}">編輯</a></td> -->
+	<!--										<td><a class="btn btn-danger" -->
+	<!--											   th:data-confirm-delete="是否刪除商品？" -->
+	<!--											   onclick="if(!confirm(this.getAttribute('data-confirm-delete')))return false" -->
+	<!--											   th:href="@{/delete-product/} + ${id}">刪除</a></td> -->
+	<!--										<td><a class="btn btn-success" th:href="@{/show-order-details/} + ${productId}">顯示</a></td> -->
 										</tr>
 									</tbody>
 								</table>
@@ -70,7 +82,7 @@
 	<!-- 					</div> -->
 	<!-- 					<div class="form-row"> -->
 			            	<div class="row gx-5 justify-content-center">
-				                <a th:href="@{/add-order/} + ${cartDetails[0].cart.cartId}"  class="btn btn-outline-success">結帳</a>
+								<a th:href="@{/add-order/} + ${cartDetails[0].cart.cartId}"  class="btn btn-outline-success">結帳</a>
 <!-- 				                <input class="btn btn-success" type="submit" value="結帳"> -->
 				                <a th:href="@{/}" class="btn btn-outline-primary">返回</a>
 				            </div>

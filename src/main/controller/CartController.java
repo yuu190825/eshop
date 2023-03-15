@@ -22,9 +22,9 @@ import main.service.ProductService;
 @Controller
 public class CartController {
 
-	@Autowired
+    @Autowired
     private CartService cartService;
-	
+
     @Autowired
     private ProductService productService;
 
@@ -33,7 +33,7 @@ public class CartController {
 
     /**
      * 商品加入購物車
-     * 
+     *
      * @param productId
      * @param model
      * @return 購物車表單
@@ -60,7 +60,7 @@ public class CartController {
 
     /**
      * 加入購物車
-     * 
+     *
      * @param cartForm
      * @param model
      * @return 返回購物車
